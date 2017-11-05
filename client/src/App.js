@@ -3,8 +3,8 @@ import Jumbotron from "./components/Jumbotron";
 import Nav from "./components/Nav";
 import Input from "./components/Input";
 import Button from "./components/Button";
-import {MapList, MapContainer} from "./components/custom";
-import {MyMapComponent} from "./components/MapDiv";
+import {MapContainer} from "./components/custom";
+import {Map} from "./components/MapDiv";
 import API from "./utils/API";
 import { Container, Row, Col } from "./components/Grid";
 
@@ -75,10 +75,6 @@ class App extends Component {
       <div>
         <Nav />
         <Jumbotron />
-        <MyMapComponent
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
         <Container>
           <Row>
             <Col size="md-12">
@@ -112,6 +108,13 @@ class App extends Component {
                 {!this.state.results ? 
                 <h1 className="text-center">No Location to Display</h1>
                : <MapContainer _location={this.state.results} /> }
+            </Col>
+            <Col size="xs-12">
+                <Map 
+                  containerElement={<div style={{ height: `400px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+
+                /> }
             </Col>
           </Row>
         </Container>
