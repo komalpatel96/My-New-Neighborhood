@@ -116,16 +116,7 @@ class App extends Component {
                 <h1 className="text-center">No Location to Display</h1>
                : <MapContainer _location={this.state.results} /> }
             </Col>
-            <Col size="xs-12">
-                <MyMapComponent 
-                  google={this.props.google}
-                  center= {{lat: this.state.latitude, lng: this.state.longitude}}
-                  containerElement={<div style={{ height: `400px` }} />}
-                  
-                  mapElement={<div style={{ height: `100%` }} />}
-/>
-            </Col>
-          </Row>
+           </Row>
         </Container>
       </div>
 
