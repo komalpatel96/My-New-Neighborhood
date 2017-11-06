@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import Input from "./components/Input";
 import Button from "./components/Button";
 import {MapContainer} from "./components/custom";
-import {Map} from "./components/MapDiv";
+import {MyMapComponent} from "./components/MapDiv/MyMapComponent";
 import API from "./utils/API";
 import { Container, Row, Col } from "./components/Grid";
 
@@ -13,6 +13,8 @@ class App extends Component {
   state = {
     locationSearch: "",
     location: '',
+    latitude: null,
+    longitude: null,
     results: null
   };
 
@@ -32,12 +34,17 @@ class App extends Component {
       location: this.state.locationSearch
     })
 
-    var latCoord = -8.4095178;
-    var lngCoord = 115.188916;
-
     API.getLocation(this.state.locationSearch)
       .then(res => {
-        this.setState({ results: res.data });
+        this.setState({ 
+          results: res.data
+         });
+        this.setState({ 
+          latitude: res.data.results[0].geometry.location.lat
+         });
+        this.setState({ 
+          longitude: res.data.results[0].geometry.location.lng
+         });
         
         console.log(res.data);
 
@@ -45,10 +52,11 @@ class App extends Component {
         // lngCoord = this.props._location.results[0].geometry.location.lat;
 
         // initMap(latCoord, lngCoord)
-      }).then(function(latCoord, lngCoord){
-        // initMap(latCoord, lngCoord);
-
       })
+      // .then(function(latCoord, lngCoord){
+      //   // initMap(latCoord, lngCoord);
+
+      // })
       .catch(err => console.log(err));
       // initMap(latCoord, lngCoord)
   };
@@ -59,7 +67,6 @@ class App extends Component {
   //   latCoord = this.props._location.results[0].geometry.location.lat;
   //   lngCoord = this.props._location.results[0].geometry.location.lat;
   //   console.log(latCoord);
-
   // };
 
 
@@ -110,11 +117,13 @@ class App extends Component {
                : <MapContainer _location={this.state.results} /> }
             </Col>
             <Col size="xs-12">
-                <Map 
+                <MyMapComponent 
+                  google={this.props.google}
+                  center= {{lat: this.state.latitude, lng: this.state.longitude}}
                   containerElement={<div style={{ height: `400px` }} />}
+                  
                   mapElement={<div style={{ height: `100%` }} />}
-
-                /> }
+/>
             </Col>
           </Row>
         </Container>
