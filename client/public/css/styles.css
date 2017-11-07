@@ -1,0 +1,225 @@
+
+/*body {
+    background: url("../images/brownstone.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}*/
+a {
+    text-decoration: none;
+    position: relative;
+    font-size: 18px;
+    color: #292929;
+    padding-left: 10px;
+    margin-right: 15px; 
+    padding-bottom: 19px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #292929;
+    
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-bottom: 8px solid #d9534f;
+  transition: 0.4s;
+
+}
+
+a:hover:after {
+  width: 100%;
+}
+/*a:hover {
+    color: #d9534f;
+}*/
+
+.form-horizontal {
+    display: table;
+    margin: 0 auto;
+}
+
+.input-group-btn {
+    width: 0%;
+}
+
+.btn-danger {
+    border-radius: 0 !important;
+    border: 0px solid;
+    margin-left: 0px;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.city-search {
+    border: 0px solid;
+    border-radius: 0 !important;
+    height: 50px;
+    width: 700px;
+    font-size: 20px;
+    padding-left: 10px;
+    font-weight: lighter;
+    
+}
+
+.header-image img {
+    width: 100% !important;
+}
+.container-fluid {
+    background-color: #f1f1f1;
+    height: 50px;     
+}
+
+.container-buttons {
+    float: right;
+    margin-top: 8px;
+}
+
+.container-title {
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+/* Full-width input fields */ 
+#headerImage {
+    background-image: url("../images/suburbs.jpg");
+    height: 550px;
+    text-align: center;
+    color: white;
+    background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+}
+
+#surveyImage {
+    background-image: url("../images/survey.jpg");
+    height: 200px;
+    width: 350px;
+    background-size: 100%;
+}
+
+#searchImage {
+    background-image: url("../images/search.jpg");
+    height: 200px;
+    width: 350px;
+    background-size: 130%;
+}
+
+#movingImage {
+    background-image: url("../images/move_in.jpg");
+    height: 200px;
+    width: 350px;
+    background-size: 100%;
+}
+
+.description {
+    width: 350px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.example-image{
+    text-align: center;
+}
+
+#middleImage { 
+    color: #ffffff;
+    text-align: center;
+    /* The image used */
+    background-image: url("../images/roomies.jpg");
+    border-radius: 0px;
+
+    /* Set a specific height */
+    height: 350px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footerDiv {
+    height: 200px;
+    text-align: center;
+    padding-top: 40px;
+
+}
+
+.jumbotron h1 {
+    font-size: 50px;
+    margin-top: 60px;
+}
+
+.jumbotron p {
+    font-size: 25px;
+}
+
+.footerBtn {
+    height: 80px;
+    width: 80%;
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+.footerText {
+    margin-top: 0px;
+}
+
+.mainFooter {
+    background-color: #1e1e1e;
+    height: 100px;
+    text-align: center;
+    padding-top: 35px;
+    color: white;
+    font-size: 18px;
+}
+
+/*End of Index Styling*/
+
+/*Survey Page CSS*/
+.answer {
+    margin: 5px 5px 5px 5px;
+}
+
+.quizJumbotron {
+    margin-top: 125px;
+}
+
+#surveyBody {
+    background-image: url("../images/brownstone.jpg");
+    background-size: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+/*End of Survey Page CSS*/
+
+
+.welcomeDiv {
+    text-align: center;
+}
+
+.wrapper {
+    text-align: center;
+    padding-top: 100px
+}
+
+
+.inputM{
+    top: -16px;
+    left: 134px;
+
+}
+
+
+
+
+
+

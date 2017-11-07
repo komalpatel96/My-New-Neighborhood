@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Jumbotron from "./components/Jumbotron";
-import Nav from "./components/Nav";
-import Input from "./components/Input";
-import Button from "./components/Button";
-import {MapContainer} from "./components/custom";
-import {MyMapComponent} from "./components/MapDiv/MyMapComponent";
+import Jumbotron from "./components/Layout/Jumbotron";
+import Nav from "./components/Layout/Nav";
+import Input from "./components/Layout/Input";
+import Button from "./components/Layout/Button";
+import {MapContainer} from "./components/Map";
 import API from "./utils/API";
 import { Container, Row, Col } from "./components/Grid";
 
@@ -28,7 +27,7 @@ class App extends Component {
   };
 
   handleLocationSubmit = event => {
-    // When the form is submitted, prevent its default behavior, get recipes update the recipes state
+    // When the form is submitted, prevent its default behavior, get location update the location state
     event.preventDefault();
     this.setState({
       location: this.state.locationSearch
@@ -48,63 +47,44 @@ class App extends Component {
         
         console.log(res.data);
 
-        // latCoord = this.props._location.results[0].geometry.location.lat;
-        // lngCoord = this.props._location.results[0].geometry.location.lat;
+      }).catch(err => console.log(err));
 
-        // initMap(latCoord, lngCoord)
-      })
-      // .then(function(latCoord, lngCoord){
-      //   // initMap(latCoord, lngCoord);
-
-      // })
-      .catch(err => console.log(err));
-      // initMap(latCoord, lngCoord)
   };
 
-  
-  // initMap = (latCoord1, lngCoord1) =>{
-  //   console.log("inside initMap");
-  //   latCoord = this.props._location.results[0].geometry.location.lat;
-  //   lngCoord = this.props._location.results[0].geometry.location.lat;
-  //   console.log(latCoord);
-  // };
-
-
-
-
-      // latCoord = this.props._location.results[0].geometry.location.lat;
-      // lngCoord = this.props._location.results[0].geometry.location.lat;
-
-  
-
+ 
   render() {
     return (
       <div>
         <Nav />
-        <Jumbotron />
+        <Jumbotron>
+          
+        </Jumbotron>
         <Container>
           <Row>
             <Col size="md-12">
               <form>
                 <Container>
                   <Row>
-                    <Col size="xs-9 sm-10">
+                  <div className="form-horizontal">
+                    <Col size="xs-9 sm-10 md-8">
                       <Input
                         name="locationSearch"
+                        className="city-search"
                         value={this.state.locationSearch}
                         onChange={this.handleInputChange}
-                        placeholder="Search a Location"
+                        placeholder="Search City, State or Zipcode"
                         id="location-input"
-                      />
-                      
+                      />                   
                     </Col>
-                    <Col size="xs-3 sm-2">
+
+                    <Col size="xs-3 sm-2 md-4">
                       <Button
                         onClick={this.handleLocationSubmit}
                         type="success" 
-                        className="btn btn-primary"
-                      >Search</Button>
+                        className="btn btn-danger"
+                      ><span className="glyphicon glyphicon-search"></span> Search</Button>
                     </Col>
+                  </div>
                   </Row>
                 </Container>
               </form>
