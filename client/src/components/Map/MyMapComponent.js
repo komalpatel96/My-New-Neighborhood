@@ -75,7 +75,7 @@ export const MapWithASearchBox = compose(
 )(props =>
   <GoogleMap
     ref={props.onMapMounted}
-    zoom={9}
+    zoom={15}
     center={props.centerMe}
     onBoundsChanged={props.onBoundsChanged}
   >
