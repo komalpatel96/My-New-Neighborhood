@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Container, Row, Col } from "../Grid";
 import { MapWithASearchBox } from "./MyMapComponent";
+import Jumbotron from "../Layout/Jumbotron";
 
 
 //setting states
