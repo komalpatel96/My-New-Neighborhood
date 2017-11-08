@@ -38,7 +38,7 @@ const Jumbotron = props => {
                 onClick={handleSubmit}
                 type="success" 
                 className="btn btn-danger"
-                ><Link to={"/info"}>Search</Link></Button>
+                >Search</Button>
             </Col>
           </div>
           </Row>

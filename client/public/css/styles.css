@@ -1,9 +1,22 @@
+div {
+    /*border: 1px solid red;*/
+}
 
-/*body {
-    background: url("../images/brownstone.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-}*/
+.population {
+    float:left;
+    position:relative;
+    z-index: 10;
+}
+
+.realEstateData {
+    float:left;
+    position: relative;
+    text-align:left;
+    margin-left:-50px;
+    z-index: 0;
+    overflow:auto;
+}
+
 a{
         color: #000000;
 }
