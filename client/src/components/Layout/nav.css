@@ -1,0 +1,20 @@
+.container-fluid {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.container-buttons {
+    position: absolute;
+    right: 10px;
+    margin: 0;
+    top: 15px;
+}
+
+.close {
+	color: black;
+}
+
+.home-button {
+	top: 15px;
+	padding: 12px 2px 12px 2px;
+}

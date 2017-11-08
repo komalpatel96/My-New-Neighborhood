@@ -9,15 +9,12 @@ a {
     position: relative;
     font-size: 18px;
     color: #292929;
-    padding-left: 10px;
-    margin-right: 15px; 
-    padding-bottom: 19px;
+    padding: 12px 5px 12px 5px;
 }
 
 a:hover {
     text-decoration: none;
-    color: #292929;
-    
+    color: #292929;    
 }
 
 a:after {
@@ -28,7 +25,6 @@ a:after {
   width: 0%;
   border-bottom: 8px solid #d9534f;
   transition: 0.4s;
-
 }
 
 a:hover:after {
