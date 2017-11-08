@@ -11,5 +11,13 @@ export default {
 			key: 'AIzaSyBi38CXkWj_pgUUI2QKeNOjI2rghEKPZr4'
 		}
     	})
+  },
+
+  getEvents: function(query) {
+    return axios.get("/api/events", { params: { "location.address": query}});
+  },
+
+  getWeather: function(query) {
+    return axios.get("/api/weather", { params: { q: query}});
   }
 };
