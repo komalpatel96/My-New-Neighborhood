@@ -1,10 +1,26 @@
+div {
+    /*border: 1px solid red;*/
+}
 
-/*body {
-    background: url("../images/brownstone.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-}*/
-a {
+.population {
+    float:left;
+    position:relative;
+    z-index: 10;
+}
+
+.realEstateData {
+    float:left;
+    position: relative;
+    text-align:left;
+    margin-left:-50px;
+    z-index: 0;
+    overflow:auto;
+}
+
+a{
+        color: #000000;
+}
+a#modalCSS {
     text-decoration: none;
     position: relative;
     font-size: 18px;
@@ -14,13 +30,13 @@ a {
     padding-bottom: 19px;
 }
 
-a:hover {
+a#modalCSS:hover {
     text-decoration: none;
     color: #292929;
     
 }
 
-a:after {
+a#modalCSS:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -31,7 +47,7 @@ a:after {
 
 }
 
-a:hover:after {
+a#modalCSS:hover:after {
   width: 100%;
 }
 /*a:hover {

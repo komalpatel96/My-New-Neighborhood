@@ -1,15 +1,24 @@
 import React from "react";
 import Input from "./Input";
-import { Container, Row, Col } from "../Grid";
-import Button from "./Button";
-import API from "../../utils/API";
+import { Row, Col } from "../Grid";
+import {Link} from 'react-router-dom'
 
-const Jumbotron = props => (
+import Button from "./Button";
+
+
+const Jumbotron = props => {
+
+  const handleSubmit = (event) => {
+    props.setRedirect("/info");
+    props.handleLocationSubmit(event);
+  }
+
+  return (
     // <Container>
     <div className="jumbotron" id="headerImage">
       <div className="container-title">
        <h1>Stop Dreaming, Start Searching</h1>
-         <p> The neighborhood of your dreams is a quick search away
+         <p> The neighborhood of your dreams is a quick search away!
          </p>
           <Row>
           <div className="form-horizontal">
@@ -26,16 +35,16 @@ const Jumbotron = props => (
 
             <Col size="xs-3 sm-2 md-4">
               <Button
-                onClick={props.handleLocationSubmit}
+                onClick={handleSubmit}
                 type="success" 
                 className="btn btn-danger"
-              ><span className="glyphicon glyphicon-search"></span> Search</Button>
+                >Search</Button>
             </Col>
           </div>
           </Row>
       </div>
-    </div>
+    </div>);
     // </Container>
-  );
+}
 
 export default Jumbotron;
