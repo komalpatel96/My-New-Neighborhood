@@ -18,3 +18,11 @@
 	top: 15px;
 	padding: 12px 2px 12px 2px;
 }
+
+.hidden { 
+	display:none; 
+}
+
+#errorMessage {
+  color: red;
+}

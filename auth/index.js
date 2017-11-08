@@ -14,7 +14,7 @@ router.get(
 
 // this route is just used to get the user basic info
 router.get('/user', (req, res, next) => {
-	console.log('===== user!!======')
+	console.log('===== logged in user below ======')
 	console.log(req.user)
 	if (req.user) {
 		return res.json({ user: req.user })
@@ -23,15 +23,12 @@ router.get('/user', (req, res, next) => {
 	}
 })
 
-router.post(
-	'/login',
-	function(req, res, next) {
+router.post('/login', (req, res, next) => {
 		console.log(req.body)
-		console.log('================')
+		console.log('========Pre-Authentication=========')
 		next()
 	},
-	passport.authenticate('local'),
-	(req, res) => {
+	passport.authenticate('local'), (req, res) => {
 		console.log('POST to /login')
 		const user = JSON.parse(JSON.stringify(req.user)) // hack
 		const cleanUser = Object.assign({}, user)
@@ -54,17 +51,18 @@ router.post('/logout', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-	const { email, password, name, age } = req.body
+	const { username, password, email, name, age } = req.body
 	// ADD VALIDATION
-	User.findOne({ 'local.email': email }, (err, emailMatch) => {
+	User.findOne({ 'local.username': username }, (err, emailMatch) => {
 		if (emailMatch) {
 			return res.json({
-				error: `Sorry, already a user with that email: ${email}`
+				error: `Sorry, already a user with that username: ${username}`
 			})
 		}
 		const newUser = new User({
-			'local.email': email,
+			'local.username': username,
 			'local.password': password,
+			'email': email,
 			'name': name,
 			'age': age
 		})
