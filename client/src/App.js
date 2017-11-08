@@ -56,14 +56,17 @@ class App extends Component {
 
        for (let i=0;i<10;i++) {
 
-         let eventObject = {            
-           name: res.data[i].name.text,
-           description: (res.data[i].description.text.substring(0, 220)+"..."),
-           image: res.data[i].logo.url,
-           link: res.data[i].url,
-         }
+        if(res.data[i].name.text !== null && res.data[i].logo !== null){
+
+           let eventObject = {            
+             name: res.data[i].name.text,
+             description: (res.data[i].description.text.substring(0, 220)+"..."),
+             image: res.data[i].logo.url,
+             link: res.data[i].url,
+           }
 
          eventArray.push(eventObject)
+        }
        }
        console.log(eventArray);
        this.setState({ eventResults: eventArray })
@@ -79,6 +82,7 @@ class App extends Component {
            name: res.data.name,
            weather: res.data.weather[0].main,
            weatherIcon: res.data.weather[0].icon,
+           weatherId: res.data.weather[0].id,
            description: res.data.weather[0].description,
            temp: Math.round(((res.data.main.temp - 273.15) * 1.8 + 32)),
            wind: res.data.wind.speed

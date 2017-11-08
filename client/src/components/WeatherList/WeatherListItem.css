@@ -57,7 +57,7 @@ img {
       padding-top: 0;
   	  padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -64px -105px; 
+      background-position: -305px -180px; 
     }
 
 [class="01n"]{
@@ -68,7 +68,7 @@ img {
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -508px -635px; 
+      background-position: -495px -620px; 
   }
 
 [class="02d"]  {
@@ -79,7 +79,7 @@ img {
       padding-top: 0;
   	  padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -500px -190px; 
+      background-position: -498px -183px; 
     }
 
 [class="02n"] {
@@ -90,7 +90,7 @@ img {
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -79px -610px; 
+      background-position: -700px -183px; 
   }
 
 [class="03d"], [class="03n"], [class="04d"], [class="04n"]{
@@ -101,7 +101,7 @@ img {
     	padding-top: 0;
     	padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -128px -200px; 
+      background-position: -112px -185px; 
   }
 
 [class="09d"], [class="09n"]{
@@ -112,7 +112,7 @@ img {
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -830px -105px; 
+      background-position: -304px -405px; 
   }
 
 [class="13d"], [class="13n"]  {
@@ -123,11 +123,11 @@ img {
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -65px -285px; 
+      background-position: -498px -405px; 
 
   }
   
-[class="10d"], [class="10n"]  {
+[class="10d"]  {
       background-image: url('../../images/weather-icons.png');
       height:180px;
       width:180px;
@@ -135,8 +135,19 @@ img {
       padding-top: 0;
   	  padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -828px -465px; 
+      background-position: -898px -185px; 
   }
+
+[class="10n"]  {
+    background-image: url('../../images/weather-icons.png');
+    height:180px;
+    width:180px;
+    margin:0 auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-repeat: no-repeat;
+    background-position: -898px -410px; 
+}
 
 [class="11d"], [class="11n"] {
       background-image: url('../../images/weather-icons.png');
@@ -146,7 +157,7 @@ img {
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -630px -805px; 
+      background-position: -112px -405px; 
   }
 
 [class="50d"], [class="50n"]{
@@ -157,6 +168,17 @@ img {
     padding-top: 0;
   	padding-bottom: 0;
     background-repeat: no-repeat;
-    background-position: -318px -635px; 
+    background-position: -302px -620px; 
+  }
+
+  [class="615"], [class="616"]{
+    background-image: url('../../images/weather-icons.png');
+    height:180px;
+    width:180px;
+    margin:0 auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-repeat: no-repeat;
+    background-position: -113px -620px; 
   }
   /* End Weather Icon Classes*/
