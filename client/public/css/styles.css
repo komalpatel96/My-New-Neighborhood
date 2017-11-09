@@ -1,23 +1,42 @@
+div {
+    /*border: 1px solid red;*/
+}
 
-/*body {
-    background: url("../images/brownstone.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-}*/
-a {
+.population {
+    float:left;
+    position:relative;
+    z-index: 10;
+}
+
+.realEstateData {
+    float:left;
+    position: relative;
+    text-align:left;
+    margin-left:-50px;
+    z-index: 0;
+    overflow:auto;
+}
+
+a{
+        color: #000000;
+}
+a#modalCSS {
     text-decoration: none;
     position: relative;
     font-size: 18px;
     color: #292929;
-    padding: 12px 5px 12px 5px;
+    padding-left: 10px;
+    margin-right: 15px; 
+    padding-bottom: 19px;
 }
 
-a:hover {
+a#modalCSS:hover {
     text-decoration: none;
-    color: #292929;    
+    color: #292929;
+    
 }
 
-a:after {
+a#modalCSS:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -25,9 +44,10 @@ a:after {
   width: 0%;
   border-bottom: 8px solid #d9534f;
   transition: 0.4s;
+
 }
 
-a:hover:after {
+a#modalCSS:hover:after {
   width: 100%;
 }
 /*a:hover {
@@ -86,7 +106,7 @@ a:hover:after {
     background-image: url("../images/suburbs.jpg");
     height: 550px;
     text-align: center;
-    color: white;
+    /*color: white;*/
     background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -149,11 +169,13 @@ a:hover:after {
 }
 
 .jumbotron h1 {
+    color: white;
     font-size: 50px;
     margin-top: 60px;
 }
 
 .jumbotron p {
+    color: white;
     font-size: 25px;
 }
 
@@ -179,40 +201,6 @@ a:hover:after {
 
 /*End of Index Styling*/
 
-/*Survey Page CSS*/
-.answer {
-    margin: 5px 5px 5px 5px;
-}
-
-.quizJumbotron {
-    margin-top: 125px;
-}
-
-#surveyBody {
-    background-image: url("../images/brownstone.jpg");
-    background-size: 100%;
-    height: 100vh;
-    text-align: center;
-}
-
-/*End of Survey Page CSS*/
-
-
-.welcomeDiv {
-    text-align: center;
-}
-
-.wrapper {
-    text-align: center;
-    padding-top: 100px
-}
-
-
-.inputM{
-    top: -16px;
-    left: 134px;
-
-}
 
 
 

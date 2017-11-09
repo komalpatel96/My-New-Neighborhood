@@ -11,6 +11,29 @@ export default {
 			key: 'AIzaSyBi38CXkWj_pgUUI2QKeNOjI2rghEKPZr4'
 		}
     	})
-  }
+  },
+  getCensus: function(query) {
+    // console.log("inside getCENSUS")
+    // console.log(query);
 
+    return axios.get("/api/census", { params: { for: "zip code tabulation area:" + query }});
+  },
+    getCensusState: function(query) {
+    return axios.get("/api/census/state");
+  },
+  getEvents: function(query) {
+    return axios.get("/api/events", { params: { "location.address": query}});
+  },
+
+ getWeather: function(query) {
+    return axios.get("/api/weather", { params: { zip: query}});
+  },
+
+  getYelp: function(query) {
+    return axios.get("/api/yelp", {params: {location: query}});
+  },
+
+  getSchools: function(query) {
+     return axios.get("/api/schools", {params: {st: query}});
+  }
 };

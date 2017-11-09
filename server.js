@@ -35,6 +35,7 @@ app.use(passport.session()) // will call the deserializeUser
 
 /* Express app ROUTING */
 app.use('/auth', require('./auth'))
+app.use('/api', require('./routes/apiRoutes'))
 
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
