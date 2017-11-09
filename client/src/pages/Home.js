@@ -4,6 +4,8 @@ import Jumbotron from "../components/Layout/Jumbotron";
 import API from "../utils/API";
 import { EventList, EventListItem } from "../components/EventList";
 import { WeatherList, WeatherListItem } from "../components/WeatherList";
+import { YelpList, YelpListItem } from "../components/YelpList";
+
 import { Container, Row, Col } from "../components/Grid";
 import { Demos, Chart,PieChart } from "../components/DEMOS";
 
@@ -21,6 +23,7 @@ class Home extends Component {
     redirectTo: null,
     eventResults: [],
     weatherStats: {},
+    yelpResults: [],
     demo:[],
     gender:[],
     maleMaritalStatus:[],
@@ -65,6 +68,7 @@ class Home extends Component {
 
     API.getLocation(this.state.locationSearch)
       .then(res => {
+        console.log(res.data);
         this.setState({
           location: this.state.locationSearch, 
           results: res.data,
@@ -78,9 +82,11 @@ class Home extends Component {
       
       .then(res => {
 
+        console.log("EVENT DATA")
+        console.log(res.data);
        for (let i=0;i<10;i++) {
 
-        if(res.data[i].name.text !== null && res.data[i].logo !== null){
+        if(res.data.length !== 0 && res.data[i] !== undefined && res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
 
            let eventObject = {            
              EBname: res.data[i].name.text,
@@ -113,6 +119,30 @@ class Home extends Component {
           };
 
         this.setState({ weatherStats: weatherObject });
+      })
+
+    }).then(event => {
+      API.getYelp(this.state.locationSearch)
+      .then(res => {
+        
+        console.log(res.data);
+        
+        const yelpArray = [];
+
+        for (let i=0;i<res.data.length;i++) {
+
+          let yelpObject = {            
+            YTname: res.data[i].name,
+            YTaddress1: res.data[i].location.display_address[0],
+            YTaddress2: res.data[i].location.display_address[1],
+            YTimage: res.data[i].image_url,
+            YTlink: res.data[i].url,
+          }
+
+          yelpArray.push(yelpObject)
+        }
+
+        this.setState({ yelpResults: yelpArray });
       })
     }).then(query1=>{
       API.getCensus(this.state.locationSearch)
@@ -285,6 +315,8 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
 
     else{
       return (
+
+      <div>
       <Info 
         mapResults={this.state.results} 
         location={this.state.location} 
@@ -295,12 +327,14 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
         weather={this.state.weatherStats.weather}
         temp={this.state.weatherStats.temp}
         wind={this.state.weatherStats.wind}
-        
-        EBdata= {this.state.eventResults}
+        EBdata={this.state.eventResults}
+        YTdata={this.state.yelpResults}
         CensusData = {this.state}
 
          >
-      </Info>)
+      </Info>
+      </div>
+      )
     }
 
     
