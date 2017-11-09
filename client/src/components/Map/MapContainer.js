@@ -17,17 +17,11 @@ export class MapContainer extends Component {
 
   render() {
    
-  return(
+  return( 
+  
+        <div>
 
-    <li className="list-group-item">
-      <Container>
-        <Row>
-          <Col size="xs-12">
-          <h3> Formatted address: {this.props._location.results ? this.props._location.results[0].formatted_address : ""}  </h3>
-          <h3> Latitude: {this.props._location.results ? this.props._location.results[0].geometry.location.lat : ""}  </h3>
-          <h3> Longitude: {this.props._location.results ? this.props._location.results[0].geometry.location.lng : ""}  </h3>
-          </Col>
-          <Col size="xs-12">
+          <div>
             <MapWithASearchBox
               google={this.props.google}
               isMarkerShown
@@ -36,13 +30,11 @@ export class MapContainer extends Component {
                 lat: this.props._location.results ? this.props._location.results[0].geometry.location.lat : "", 
                 lng: this.props._location.results ? this.props._location.results[0].geometry.location.lng : ""}}
               loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `400px` }} />}
+              containerElement={<div style={{ height:`300px`, width: `600px` }} />}
               mapElement={<div style={{ height: `100%` }} />}
             />
-            </Col>
-        </Row>
-      </Container>
-    </li>
+            </div>
+        </div>
 
     );
   }
