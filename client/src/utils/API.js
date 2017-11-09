@@ -18,14 +18,32 @@ export default {
 
     return axios.get("/api/census", { params: { for: "zip code tabulation area:" + query }});
   },
-    getCensusState: function(query) {
+
+  getCensusState: function(query) {
     return axios.get("/api/census/state");
   },
+  
   getEvents: function(query) {
     return axios.get("/api/events", { params: { "location.address": query}});
   },
 
- getWeather: function(query) {
+  getWeather: function(query) {
     return axios.get("/api/weather", { params: { zip: query}});
+  },
+
+  getYelpThings: function(query) {
+    return axios.get("/api/yelpThings", {params: {location: query}});
+  },
+
+  getYelpMoving: function(query) {
+    return axios.get("/api/yelpMoving", {params: {location: query}});
+  },
+
+  getYelpRestaurants: function(query) {
+    return axios.get("/api/yelpRestaurants", {params: {location: query}});
+  },
+
+  getSchools: function(query) {
+     return axios.get("/api/schools", {params: {st: query}});
   }
 };

@@ -6,31 +6,36 @@ import { Demos } from "./Demos";
 
 export class Chart extends React.Component {
 
-  render() 
-  {
-
-    
+  render()  {
+   
   return (
 
-<VictoryChart height={400} width={600}
-domainPadding={{ x:  80}}
+<VictoryChart 
+responsive={true}
+domainPadding={{ x: 50}}
 title="Marital Status"
+fontSize={8}
+>
+
+<VictoryGroup 
 containerComponent={
 
   <VictoryVoronoiContainer
       voronoiDimension="x"
       labelComponent={<VictoryTooltip/>}
       responsive={true}
-      voronoiPadding={20}     
-  />
-}>
+      voronoiPadding={40} 
 
-<VictoryGroup 
+  />
+}
 offset={20} 
-colorScale={["lightblue", "lightpink"]}
-padding={0}
+colorScale={["navy", "tomato"]}
+padding={40}
+fontSize={8} 
+
 > 
 <VictoryBar 
+
     data={[ 
       { x: "married", y: parseInt(this.props.data.maleMarried) },
       { x: "single", y: parseInt(this.props.data.maleSingle)},
@@ -40,40 +45,42 @@ padding={0}
     categories={{ x: ["married", "single", "divorced","widowed","separated"] }}
     
     labelComponent={
+
     <VictoryTooltip
-    activateData={true}
+    pointerLength={10}
+    activateData={false}
     text={(datum) =>  datum.x + " men" + "\n" + datum.y}
     />
   
 }
-style={{
-        data: {fill: "lightblue", width: 20},
-        labels: { fill: "black" }
+    style={{
+        data: {fill: "navy", width: 20},
+        labels: { fill: "navy", fontSize:10 }
         }}
-events={[{
-  target: "data",
-  eventHandlers: {
-onMouseOver: () => {
-      return [
-        {
+        events={[{
           target: "data",
-          mutation: () => ({style: {fill: "gold", width: 25}})
-        }, {
-          target: "labels",
-          mutation: () => ({ active: true }),
-        
-        }
-      ];
-    },
-onMouseOut: () => {
-      return [
-        {
-          target: "data",
-          mutation: () => {}
-        }, {
-          target: "labels",
-          mutation: () => ({ active: false })
-        }
+          eventHandlers: {
+        onMouseOver: () => {
+              return [
+                {
+                  target: "data",
+                  mutation: () => ({style: {fill: "gold", width: 25}})
+                }, {
+                  target: "labels",
+                  mutation: () => ({ active: true }),
+                
+                }
+              ];
+            },
+        onMouseOut: () => {
+              return [
+                {
+                  target: "data",
+                  mutation: () => {}
+                }, {
+                  target: "labels",
+                  mutation: () => ({ active: false })
+                }
       ];
     }
   }
@@ -93,13 +100,13 @@ onMouseOut: () => {
 
   <VictoryTooltip
   activateData={true}
-   pointerLength={30}
+   pointerLength={10}
    text={(datum) =>  datum.x + " women" + "\n" + datum.y}
 />
     }
   style={{
-              data: {fill: "lightpink", width: 20},
-              labels: { fill: "black", }
+          data: {fill: "tomato", width: 20},
+          labels: { fill: "tomato",fontSize:10  }
             }}
   events={[{
       target: "data",
