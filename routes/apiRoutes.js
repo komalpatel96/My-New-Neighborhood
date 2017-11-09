@@ -24,4 +24,20 @@ router.get("/census", (req, res) => {
     .then(({ data }) => res.json(data))   
     .catch(err => res.status(422).json(err));
 });
+
+router.get("/yelp", (req, res) => {
+  axios
+    .get("https://yproxy-01.herokuapp.com/search?term=things%20to%20do&limit=10&radius=1000", { params: req.query })
+    .then(({ data: { businesses } }) => res.json(businesses))
+    .catch(err => res.status(422).json(err));
+});
+
+router.get("/schools", (req, res) => {
+  axios
+    .get("https://api.greatschools.org/schools/nearby?key=mf7mog37kascwfet5gooiaxx&limit=20", { params: req.query })
+    // .then(data => console.log(data))
+    .then(({ data }) => res.json(data))   
+    .catch(err => res.status(422).json(err));
+});
+
 module.exports = router;

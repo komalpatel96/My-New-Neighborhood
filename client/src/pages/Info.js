@@ -4,6 +4,7 @@ import { Container, Row, Col } from "../components/Grid";
 import {Demos, Chart, PieChart } from "../components/DEMOS";
 import { EventList, EventListItem } from "../components/EventList";
 import { WeatherList, WeatherListItem } from "../components/WeatherList";
+import { YelpList, YelpListItem } from "../components/YelpList";
 
 const Info = (props) => {
 
@@ -40,7 +41,7 @@ const Info = (props) => {
             <Col size="xs-12">
                 <EventList> 
                 {props.EBdata.map(event => {
-                  console.log(event);
+                  // console.log(event);
                    return(
                    <EventListItem
                       key = {event.EBname}
@@ -67,6 +68,22 @@ const Info = (props) => {
                 }
 
                 </WeatherList>
+                <YelpList> 
+                {props.YTdata.map(things => {
+                  console.log(things);
+                   return(
+                   <YelpListItem
+                      key = {things.YTname}
+                      name={things.YTname}
+                      address1={things.YTaddress1}
+                      address2={things.YTaddress2}
+                      image={things.YTimage}
+                      link= {things.YTlink} 
+                       />
+                      );
+                    }
+                  )}
+                </YelpList>
 
             </Col>
           </Row>
