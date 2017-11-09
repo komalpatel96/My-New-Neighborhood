@@ -198,6 +198,7 @@ export default class Nav extends React.Component {
     return (
     <div className="container-fluid">
       <div className="container-nav">
+
         <Header user={this.state.user} />
         <div className="container-buttons">
           <a className={this.state.hideLogin ? 'hidden' : ''} onClick={this.openModal1}> LOGIN </a>

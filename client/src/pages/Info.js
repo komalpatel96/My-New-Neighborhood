@@ -41,7 +41,7 @@ const Info = (props) => {
             <Col size="xs-12">
                 <EventList> 
                 {props.EBdata.map(event => {
-                  // console.log(event);
+                  console.log(event);
                    return(
                    <EventListItem
                       key = {event.EBname}

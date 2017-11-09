@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { EventList, EventListItem } from "../components/EventList";
 import { WeatherList, WeatherListItem } from "../components/WeatherList";
 import { YelpList, YelpListItem } from "../components/YelpList";
+
 import { Container, Row, Col } from "../components/Grid";
 import { Demos, Chart,PieChart } from "../components/DEMOS";
 
@@ -80,6 +81,7 @@ class Home extends Component {
       API.getEvents(this.state.locationSearch)
       
       .then(res => {
+
         console.log("EVENT DATA")
         console.log(res.data);
        for (let i=0;i<10;i++) {
@@ -118,6 +120,7 @@ class Home extends Component {
 
         this.setState({ weatherStats: weatherObject });
       })
+
     }).then(event => {
       API.getYelp(this.state.locationSearch)
       .then(res => {
@@ -312,6 +315,7 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
 
     else{
       return (
+
       <div>
       <Info 
         mapResults={this.state.results} 
@@ -323,7 +327,6 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
         weather={this.state.weatherStats.weather}
         temp={this.state.weatherStats.temp}
         wind={this.state.weatherStats.wind}
-        
         EBdata={this.state.eventResults}
         YTdata={this.state.yelpResults}
         CensusData = {this.state}

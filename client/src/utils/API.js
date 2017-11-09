@@ -21,6 +21,7 @@ export default {
     getCensusState: function(query) {
     return axios.get("/api/census/state");
   },
+  
   getEvents: function(query) {
     return axios.get("/api/events", { params: { "location.address": query}});
   },
