@@ -94,6 +94,7 @@ class Home extends Component {
       API.getEvents(this.state.zipCode)
       
       .then(res => {
+        
        for (let i=0;i<10;i++) {
 
         if(res.data.length !== 0 && res.data[i] !== undefined && res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
@@ -145,6 +146,7 @@ class Home extends Component {
         for (let i=0;i<res.data.length;i++) {
 
           let yelpThingsObject = {            
+
             YTname: res.data[i].name,
             YTaddress1: res.data[i].location.display_address[0],
             YTaddress2: res.data[i].location.display_address[1],
@@ -379,7 +381,7 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
 
     else{
       return (
-
+        
       <div>
       <Info 
         mapResults={this.state.results} 

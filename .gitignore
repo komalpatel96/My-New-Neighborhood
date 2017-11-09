@@ -45,12 +45,11 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+# testing
+/coverage
 
-# Dependency directories
-node_modules/
-jspm_packages/
+# production
+/build
 
 # Typescript v1 declaration files
 typings/
