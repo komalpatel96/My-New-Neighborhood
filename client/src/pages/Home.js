@@ -67,6 +67,7 @@ class Home extends Component {
 
     API.getLocation(this.state.locationSearch)
       .then(res => {
+        console.log(res.data);
         this.setState({
           location: this.state.locationSearch, 
           results: res.data,
@@ -79,10 +80,11 @@ class Home extends Component {
       API.getEvents(this.state.locationSearch)
       
       .then(res => {
-
+        console.log("EVENT DATA")
+        console.log(res.data);
        for (let i=0;i<10;i++) {
 
-        if(res.data.length !== 0 && res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
+        if(res.data.length !== 0 && res.data[i] !== undefined && res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
 
            let eventObject = {            
              EBname: res.data[i].name.text,
