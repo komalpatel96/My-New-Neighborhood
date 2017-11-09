@@ -5,7 +5,7 @@ import Home from "./pages/Home"
 import Nav from "./components/Layout/Nav";
 
 const App = () =>
-<Router>
+  <Router>
     <div>
       <Nav />
       <Switch>
