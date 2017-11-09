@@ -82,7 +82,7 @@ class Home extends Component {
 
        for (let i=0;i<10;i++) {
 
-        if(res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
+        if(res.data.length !== 0 && res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
 
            let eventObject = {            
              EBname: res.data[i].name.text,

@@ -34,7 +34,7 @@ router.get("/yelp", (req, res) => {
 
 router.get("/schools", (req, res) => {
   axios
-    .get("https://api.schooldigger.com/v1.1/schools?perPage=20&sortBy=rank&appID=4eab427e&appKey=73a3a683ef79658926351035be991c47", { params: req.query })
+    .get("https://api.greatschools.org/schools/nearby?key=mf7mog37kascwfet5gooiaxx&limit=20", { params: req.query })
     // .then(data => console.log(data))
     .then(({ data }) => res.json(data))   
     .catch(err => res.status(422).json(err));
