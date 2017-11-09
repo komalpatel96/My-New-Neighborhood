@@ -13,38 +13,41 @@ export class PieChart extends React.Component {
 
 render() {
 return (
-<div>
- <VictoryPie height={200} width={300}
-  containerComponent={
-      <VictoryVoronoiContainer
+<div className="background-icon-mw">
+ <VictoryPie 
+
+containerComponent={
+
+  <VictoryVoronoiContainer
       voronoiDimension="x"
-      labelComponent={<VictoryTooltip
-      fontSize={10}
-      />}
+      labelComponent={<VictoryTooltip/>}
       responsive={true}
-      voronoiPadding={0}     
-    />  
-    
-  }
+      voronoiPadding={20}     
+  />
+}
+
       data={this.props.data.gender}               
+      colorScale={["navy", "tomato" ]}
+
       // viewBox={"0 0 width, height"}
-      innerRadius = {80}               
-      colorScale={["lightblue", "lightpink" ]}
-      labelRadius={75}
-      fontSize={14}
-
+      labelRadius={90}
+      innerRadius = {80}                    
+      
       x="gender"
-
       y="count"
+      
+      padAngle={1}
 
       labelComponent={
 
       <VictoryTooltip
         activateData={true}
         text={(datum) => datum.x + "\n" + datum.y + "%"}
+        height= {60}
+        width={80}
         />}
       style={{
-        labels: { fontSize: 10, width:30, height:30 }
+        labels: { fontSize: 18 }
         }}
       events={[{
             target: "data",
@@ -53,11 +56,10 @@ return (
                 return [
                   {
                     target: "data",
-                    mutation: () => ({style: {fill: "gold", width: 10}})
+                    mutation: () => ({style: {fill: "gold"}})
                   }, {
                     target: "labels",
-                    mutation: () => ({ active: true }),
-                    labelRadius: 0
+                    mutation: () => ({ active: true })
                     
                   }
                 ];

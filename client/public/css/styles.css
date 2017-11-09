@@ -2,6 +2,16 @@ div {
     /*border: 1px solid red;*/
 }
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h3 {
+    font-size:20px;
+}
+
 .population {
     float:left;
     position:relative;
@@ -10,7 +20,7 @@ div {
 
 .realEstateData {
     float:left;
-    position: relative;
+
     text-align:left;
     margin-left:-50px;
     z-index: 0;
@@ -199,6 +209,190 @@ a#modalCSS:hover:after {
     font-size: 18px;
 }
 
+.navbar-brand {
+    height:40px;
+    line-height: 0px;
+}
+
+.affix {
+    top: 20px;
+    z-index: 9999 !important;
+  }
+
+  .centerContent{
+    text-align:center;
+  }
+
+/*.eventContainer {
+    overflow:auto ;
+}
+
+.event-list-container {
+    height:350px;
+    overflow:auto;
+
+}*/
+
+.bold {
+    font-style:bold;
+}
+
+p {
+    font-size:12px;
+}
+
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border:1px solid #111;
+  padding: 10px;
+
+}
+
+.overflowHidden {
+    overflow:hidden;
+}
+
+
+.card {
+flex: 0 0 auto;
+border-right: 1px dashed #999;
+padding:10px 20px;
+
+}
+
+
+.card > a:hover {
+color:red;
+text-decoration: none;
+
+}
+
+.card:hover {
+
+background-color: #FAF6FD;
+
+
+}
+
+.card:last-child {
+border:none;
+}
+
+h3 {
+    margin-top:0px;
+}
+
+.mapText {
+    margin:0px;
+}
+
+h2 {
+    font-size:24px;
+    text-transform:uppercase;
+}
+
+.bottom-border {
+    border-bottom: 1px dashed grey;
+    overflow:auto;
+    padding:2px 2px;
+}
+
+.resultsHeading {
+    font-size: 14px;
+    font-style:italic;
+}
+
+.subHead {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.demos-text >p  {
+    font-size:16px;
+}
+
+.popContainerNumber {
+    font-size: 30px;
+    padding: 10px 5px;
+}
+
+.popContainer  {
+    font-size:12px;
+    border:1px solid grey;
+    text-align:center;
+    font-weight: bold;
+    margin:0 0 0 0;
+    display:inline-block;
+    width:48%;
+
+}
+
+.popContainerLeft  {
+    font-size:12px;
+    border:1px solid grey;
+    text-align:center;
+    font-weight: bold;
+    margin:0 2% 0 0;
+    display:inline-block;
+    width:49%;
+
+}
+.popContainerHeading {
+    font-size:12px;
+    border:1px solid grey;
+    text-align:center;
+    font-weight: bold;
+    margin:0 5% 0 0;
+    display:inline-block;
+    width:100%;
+
+}
+
+.popContainerTag {
+    background-color: grey;
+    color:white;
+    padding:4px;
+}
+
+.small-text {
+    font-size: 8px;
+}
+.bold {
+    font-weight:bold;
+}
+
+.dataRow {
+    margin-top:10px;
+}
+
+.padding {
+    padding: 0px 0px 10px 0px;
+}
+
+.background-icon-mw {
+    background-image:url('../images/manWomanIcon.jpg');
+
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size: 40px;
+
+}
+
+.background-icon-dwell {
+    background-image:url('../images/dwellingIcon.png');
+
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size: 50px;
+
+}
+
+.map {
+    padding:50% 0;
+}
 /*End of Index Styling*/
 
 
