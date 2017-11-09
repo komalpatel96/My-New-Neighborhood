@@ -4,17 +4,19 @@ import Jumbotron from "../components/Layout/Jumbotron";
 import API from "../utils/API";
 import { EventList, EventListItem } from "../components/EventList";
 import { WeatherList, WeatherListItem } from "../components/WeatherList";
-import { YelpList, YelpListItem } from "../components/YelpList";
-
+import { YelpThingsList, YelpThingsListItem } from "../components/YelpThingsList";
+import { YelpMovingList, YelpMovingListItem } from "../components/YelpMovingList";
+import { YelpRestaurantsList, YelpRestaurantsListItem } from "../components/YelpRestaurantsList";
 import { Container, Row, Col } from "../components/Grid";
 import { Demos, Chart,PieChart } from "../components/DEMOS";
 
 
-const eventArray = [];
+let eventArray = [];
 
 class Home extends Component {
 
   state = {
+    zipCode: "",
     locationSearch: "",
     location: '',
     latitude: null,
@@ -23,7 +25,9 @@ class Home extends Component {
     redirectTo: null,
     eventResults: [],
     weatherStats: {},
-    yelpResults: [],
+    yelpThingsResults: [],
+    yelpMovingResults: [],
+    yelpRestaurantsResults: [],
     demo:[],
     gender:[],
     maleMaritalStatus:[],
@@ -65,25 +69,31 @@ class Home extends Component {
   handleLocationSubmit = event => {
     // When the form is submitted, prevent its default behavior, get location update the location state
     event.preventDefault();
-
     API.getLocation(this.state.locationSearch)
+    .then(res =>{
+      this.setState({
+      locationSearch: res.data.results[0].geometry.location.lat+" "+res.data.results[0].geometry.location.lng
+      });
+    }).then( event => {
+      API.getLocation(this.state.locationSearch)
       .then(res => {
         console.log(res.data);
+        let postalCodes = res.data.results[0].address_components.filter(function (it) {return it.types.indexOf('postal_code') != -1;}).map(function (it) {return it.long_name;});
+        console.log("POSTAL CODE BELOW")
+        console.log(postalCodes[0]);
         this.setState({
           location: this.state.locationSearch, 
           results: res.data,
           latitude: res.data.results[0].geometry.location.lat,
           longitude: res.data.results[0].geometry.location.lng,
+          zipCode: postalCodes[0],
           redirectTo: "/info"
-        });
-         }).then(events => {
+          });
+    }).then(events => {
 
-      API.getEvents(this.state.locationSearch)
+      API.getEvents(this.state.zipCode)
       
       .then(res => {
-
-        console.log("EVENT DATA")
-        console.log(res.data);
        for (let i=0;i<10;i++) {
 
         if(res.data.length !== 0 && res.data[i] !== undefined && res.data[i].name.text !== null && res.data[i].logo !== null && res.data[i].description.text !== null){
@@ -102,12 +112,12 @@ class Home extends Component {
        this.setState({ eventResults: eventArray })
       })
     }).then(query => {
-      API.getWeather(this.state.locationSearch)
+      API.getWeather(this.state.zipCode)
       .then(res => {
 
         console.log(res.data);
 
-        const weatherObject = {
+        let weatherObject = {
     
            name: res.data.name,
            weather: res.data.weather[0].main,
@@ -122,30 +132,85 @@ class Home extends Component {
       })
 
     }).then(event => {
-      API.getYelp(this.state.locationSearch)
+
+      API.getYelpThings(this.state.zipCode)
+
       .then(res => {
         
+        console.log("vvv YELP DATA vvv")
         console.log(res.data);
         
-        const yelpArray = [];
+        let yelpThingsArray = [];
 
         for (let i=0;i<res.data.length;i++) {
 
-          let yelpObject = {            
+          let yelpThingsObject = {            
             YTname: res.data[i].name,
             YTaddress1: res.data[i].location.display_address[0],
             YTaddress2: res.data[i].location.display_address[1],
             YTimage: res.data[i].image_url,
+            YTphone: res.data[i].display_phone,
             YTlink: res.data[i].url,
           }
 
-          yelpArray.push(yelpObject)
+          yelpThingsArray.push(yelpThingsObject)
         }
 
-        this.setState({ yelpResults: yelpArray });
+        this.setState({ yelpThingsResults: yelpThingsArray });
+      })
+    }).then(event => {
+
+      API.getYelpRestaurants(this.state.zipCode)
+
+      .then(res => {
+        
+        let yelpRestaurantsArray = [];
+
+        for (let i=0;i<res.data.length;i++) {
+
+          let yelpRestaurantsObject = {            
+            YRname: res.data[i].name,
+            YRaddress1: res.data[i].location.display_address[0],
+            YRaddress2: res.data[i].location.display_address[1],
+            YRimage: res.data[i].image_url,
+            YRphone: res.data[i].display_phone,
+            YRlink: res.data[i].url,
+          }
+
+          yelpRestaurantsArray.push(yelpRestaurantsObject)
+        }
+
+        this.setState({ yelpRestaurantsResults: yelpRestaurantsArray });
+      })
+    }).then(event => {
+
+      API.getYelpMoving(this.state.zipCode)
+
+      .then(res => {
+        
+        console.log("MOVING DATA")
+        console.log(res.data)
+
+        let yelpMovingArray = [];
+
+        for (let i=0;i<res.data.length;i++) {
+
+          let yelpMovingObject = {            
+            YMname: res.data[i].name,
+            YMaddress1: res.data[i].location.display_address[0],
+            YMaddress2: res.data[i].location.display_address[1],
+            YMimage: res.data[i].image_url,
+            YMphone: res.data[i].display_phone,
+            YMlink: res.data[i].url,
+          }
+
+          yelpMovingArray.push(yelpMovingObject)
+        }
+
+        this.setState({ yelpMovingResults: yelpMovingArray });
       })
     }).then(query1=>{
-      API.getCensus(this.state.locationSearch)
+      API.getCensus(this.state.zipCode)
   // .then(res => this.setState({ recipes: res.data }))
   .then(res => { 
     console.log(res.data);
@@ -286,10 +351,9 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
         console.log(this.state.demo);
         console.log(this.state.maleMarried);
   })
+})
     }).catch(err => console.log(err));
   };
-
-
 
 
   setRedirect = path => {
@@ -328,7 +392,9 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
         temp={this.state.weatherStats.temp}
         wind={this.state.weatherStats.wind}
         EBdata={this.state.eventResults}
-        YTdata={this.state.yelpResults}
+        YTdata={this.state.yelpThingsResults}
+        YRdata={this.state.yelpRestaurantsResults}
+        YMdata={this.state.yelpMovingResults}
         CensusData = {this.state}
 
          >

@@ -226,7 +226,7 @@ export default class Nav extends React.Component {
                   type="text" 
                   className="form-control" 
                   name="usernameLogin" 
-                  placeholder="Email" 
+                  placeholder="Username" 
                   value={this.state.usernameLogin} 
                   onChange={this.handleChange}
                   required></input>

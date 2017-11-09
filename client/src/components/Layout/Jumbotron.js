@@ -36,7 +36,7 @@ const Jumbotron = props => {
             <Col size="xs-3 sm-2 md-4">
               <Button
                 onClick={handleSubmit}
-                type="success" 
+                type="success submit" 
                 className="btn btn-danger"
                 >Search</Button>
             </Col>

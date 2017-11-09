@@ -3,20 +3,18 @@ import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
 
 export const EventListItem = props => (
-  <div className={'container'}>
-    <div className={'row'}>
-      <div className={'col-md-4'}>
+ 
+      <div className={'col-md-3 card'}>
         <Thumbnail src={props.image || "http://via.placeholder.com/165x165"} />
-      </div>
-      <div className={'col-md-8'}>
-        <h2>{props.name} </h2>
-        <h4>{props.description}</h4>
+     
+        <h3 className="bold">{props.name} </h3>
+        <p>{props.description}</p>
         <a rel="noreferrer noopener" target="_blank" href={props.link}>
           Link to Event
         </a>
-      </div>
+     
     </div>
-  </div>
+ 
 );
 
 

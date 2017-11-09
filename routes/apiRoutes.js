@@ -25,9 +25,23 @@ router.get("/census", (req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
-router.get("/yelp", (req, res) => {
+router.get("/yelpThings", (req, res) => {
   axios
     .get("https://yproxy-01.herokuapp.com/search?term=things%20to%20do&limit=10&radius=1000", { params: req.query })
+    .then(({ data: { businesses } }) => res.json(businesses))
+    .catch(err => res.status(422).json(err));
+});
+
+router.get("/yelpMoving", (req, res) => {
+  axios
+    .get("https://yproxy-01.herokuapp.com/search?term=moving%20companies&limit=10&radius=1000", { params: req.query })
+    .then(({ data: { businesses } }) => res.json(businesses))
+    .catch(err => res.status(422).json(err));
+});
+
+router.get("/yelpRestaurants", (req, res) => {
+  axios
+    .get("https://yproxy-01.herokuapp.com/search?term=restaurants&limit=10&radius=1000", { params: req.query })
     .then(({ data: { businesses } }) => res.json(businesses))
     .catch(err => res.status(422).json(err));
 });
