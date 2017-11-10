@@ -43,7 +43,7 @@ export default {
     return axios.get("/api/yelpRestaurants", {params: {location: query}});
   },
 
-  getSchools: function(query) {
-     return axios.get("/api/schools", {params: {st: query}});
+  getSchools: function(query, query2) {
+     return axios.get("/api/schools", {params: {state: query, zip: query2}});
   }
 };

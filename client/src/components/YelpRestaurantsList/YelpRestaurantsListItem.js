@@ -17,7 +17,7 @@ export const YelpRestaurantsListItem = props => (
         <p>{props.address1}</p>
         <p>{props.address2}</p>
         <p>{props.phone}</p>
-        <a rel="noreferrer noopener" target="_blank" href={props.url}>
+        <a rel="noreferrer noopener" target="_blank" href={props.link}>
           Yelp Link
         </a>
       </Col>

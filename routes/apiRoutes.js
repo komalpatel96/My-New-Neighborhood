@@ -48,7 +48,7 @@ router.get("/yelpRestaurants", (req, res) => {
 
 router.get("/schools", (req, res) => {
   axios
-    .get("https://api.greatschools.org/schools/nearby?key=mf7mog37kascwfet5gooiaxx&limit=20", { params: req.query })
+    .get("https://api.greatschools.org/schools/nearby?key=76ef0963b03ae1a3bcbd9b88b1af71b5&limit=6", { params: req.query })
     // .then(data => console.log(data))
     .then(({ data }) => res.json(data))   
     .catch(err => res.status(422).json(err));

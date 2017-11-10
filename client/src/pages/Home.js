@@ -4,6 +4,7 @@ import Jumbotron from "../components/Layout/Jumbotron";
 import API from "../utils/API";
 import { EventList, EventListItem } from "../components/EventList";
 import { WeatherList, WeatherListItem } from "../components/WeatherList";
+import { SchoolList, SchoolListItem } from "../components/SchoolList";
 import { YelpThingsList, YelpThingsListItem } from "../components/YelpThingsList";
 import { YelpMovingList, YelpMovingListItem } from "../components/YelpMovingList";
 import { YelpRestaurantsList, YelpRestaurantsListItem } from "../components/YelpRestaurantsList";
@@ -16,6 +17,7 @@ let eventArray = [];
 class Home extends Component {
 
   state = {
+    state: "",
     zipCode: "",
     locationSearch: "",
     location: '',
@@ -28,6 +30,7 @@ class Home extends Component {
     yelpThingsResults: [],
     yelpMovingResults: [],
     yelpRestaurantsResults: [],
+    schoolsResults: [],
     demo:[],
     gender:[],
     maleMaritalStatus:[],
@@ -81,12 +84,19 @@ class Home extends Component {
         let postalCodes = res.data.results[0].address_components.filter(function (it) {return it.types.indexOf('postal_code') != -1;}).map(function (it) {return it.long_name;});
         console.log("POSTAL CODE BELOW")
         console.log(postalCodes[0]);
+        let str = res.data.results[0].formatted_address;
+        console.log(str);
+        let str2 = str.split(",")
+        console.log(str2);
+        let saveState = str2[2].split(" ")
+        console.log(saveState);
         this.setState({
           location: this.state.locationSearch, 
           results: res.data,
           latitude: res.data.results[0].geometry.location.lat,
           longitude: res.data.results[0].geometry.location.lng,
           zipCode: postalCodes[0],
+          state: saveState[1],
           redirectTo: "/info"
           });
     }).then(events => {
@@ -209,6 +219,35 @@ class Home extends Component {
 
         this.setState({ yelpMovingResults: yelpMovingArray });
       })
+    }).then(event => {
+
+      API.getSchools(this.state.state, this.state.zipCode)
+
+      .then(res => {
+        console.log("SCHOOL DATA")
+        console.log(res.data)
+
+        let schoolsArray = [];
+
+        for (let i=0;i<res.data.schools.school.length;i++) {
+
+          let schoolsObject = {            
+            Sname: res.data.schools.school[i].name,
+            Stype: res.data.schools.school[i].type,
+            SgradeRange: res.data.schools.school[i].gradeRange,
+            Saddress: res.data.schools.school[i].address,
+            Sphone: res.data.schools.school[i].phone,
+            SstatsLink: res.data.schools.school[i].schoolStatsLink,
+            Sratings: res.data.schools.school[i].ratingsLink,
+            Sreviews: res.data.schools.school[i].reviewsLink,
+          }
+
+          schoolsArray.push(schoolsObject)
+        }
+        console.log(schoolsArray)
+        this.setState({ schoolsResults: schoolsArray });
+        console.log(this.state.schoolsResults)
+      })
     }).then(query1=>{
       API.getCensus(this.state.zipCode)
   // .then(res => this.setState({ recipes: res.data }))
@@ -294,9 +333,8 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
   {name: "Studio", total:res.data[1][28]}, 
   {name: "TwoBedrooms", total:res.data[1][30]}, 
   {name: "ThreeBedrooms", total:res.data[1][31]}, 
-  {name: "FourBedrooms",total:res.data[1][32] },
-  {name: "FiveBedrooms", total:res.data[1][33]  }, 
-
+  {name: "FourBedrooms",total:res.data[1][32]},
+  {name: "FiveBedrooms", total:res.data[1][33]}, 
   ]
 
   // var dwellings = [];
@@ -362,7 +400,6 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
     });
   }
 
- 
   render() {
     if(!this.state.redirectTo){
       return (
@@ -395,7 +432,8 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
         YTdata={this.state.yelpThingsResults}
         YRdata={this.state.yelpRestaurantsResults}
         YMdata={this.state.yelpMovingResults}
-        CensusData = {this.state}
+        CensusData={this.state}
+        Sdata={this.state.schoolsResults}
 
          >
       </Info>

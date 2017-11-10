@@ -9,6 +9,7 @@ import Button from "./Button";
 const Jumbotron = props => {
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     props.setRedirect("/info");
     props.handleLocationSubmit(event);
   }
@@ -21,7 +22,7 @@ const Jumbotron = props => {
          <p> The neighborhood of your dreams is a quick search away!
          </p>
           <Row>
-          <div className="form-horizontal">
+          <form className="form-horizontal">
             <Col size="xs-9 sm-10 md-8">
               <Input
                 name="locationSearch"
@@ -35,12 +36,13 @@ const Jumbotron = props => {
 
             <Col size="xs-3 sm-2 md-4">
               <Button
+                onSubmit={handleSubmit}
                 onClick={handleSubmit}
-                type="success submit" 
+                type="submit" 
                 className="btn btn-danger"
                 >Search</Button>
             </Col>
-          </div>
+          </form>
           </Row>
       </div>
     </div>);

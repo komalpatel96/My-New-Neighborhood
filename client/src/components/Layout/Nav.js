@@ -249,10 +249,6 @@ export default class Nav extends React.Component {
                 Login</button>
               </form>
               <hr></hr>
-              <button href="/auth/google">
-              <img src={googleButton} alt="sign into Google Button" />
-              </button>
-              <hr></hr>
               <p id="errorMessage" className={this.state.hideError ? 'hidden' : ''}>An error has occurred. Please try again.</p>
             </div>
           </Modal>

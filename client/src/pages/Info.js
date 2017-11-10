@@ -4,6 +4,7 @@ import { Container, Row, Col } from "../components/Grid";
 import {Demos, Chart, PieChart, DwellingPieChart } from "../components/DEMOS";
 import { EventList, EventListItem } from "../components/EventList";
 import { WeatherList, WeatherListItem } from "../components/WeatherList";
+import { SchoolList, SchoolListItem } from "../components/SchoolList";
 import { YelpThingsList, YelpThingsListItem } from "../components/YelpThingsList";
 import { YelpMovingList, YelpMovingListItem } from "../components/YelpMovingList";
 import { YelpRestaurantsList, YelpRestaurantsListItem } from "../components/YelpRestaurantsList";
@@ -190,6 +191,25 @@ const Info = (props) => {
                     }
                   )}
                 </YelpMovingList>
+
+                <SchoolList> 
+                {props.Sdata.map(schools => {
+                   return(
+                   <SchoolListItem
+                      key = {schools.Sname}
+                      name={schools.Sname}
+                      type={schools.Stype}
+                      address={schools.Saddress}
+                      gradeRange={schools.SgradeRange}
+                      statsLink={schools.SstatsLink}
+                      ratings={schools.Sratings}
+                      reviews={schools.Sreviews}
+                      phone={schools.Sphone} 
+                       />
+                      );
+                    }
+                  )}
+                </SchoolList>
 
           </Col>
         
