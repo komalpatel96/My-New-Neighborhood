@@ -69,4 +69,5 @@ router.get("/census", (req, res) => {
     .then(({ data }) => res.json(data))   
     .catch(err => res.status(422).json(err));
 });
+
 module.exports = router;
