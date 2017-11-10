@@ -143,7 +143,6 @@ const Info = (props) => {
           
             <YelpThingsList> 
                 {props.YTdata.map(things => {
-                 
                    return(
                    <YelpThingsListItem
                       key = {things.YTname}
@@ -174,7 +173,6 @@ const Info = (props) => {
                       );
                     }
                   )}
-                  
                 </YelpRestaurantsList>
 
                 <YelpMovingList> 
