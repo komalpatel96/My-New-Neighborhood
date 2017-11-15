@@ -8,6 +8,34 @@ div {
   box-sizing: border-box;
 }
 
+h2, h3, h1,h4 {
+    margin:0;
+    
+}
+
+#logo {
+    padding:0px;
+    margin:0px;
+    height:50px;
+}
+
+.guest {
+    font-size: 16px;
+}
+
+a:hover {
+    color: #000a7a;
+}
+.btn-results {
+    color:white;
+}
+
+.current-weather {
+    margin:0 10px;
+  
+    line-height:1;
+    font-size:20px;
+}
 h3 {
     font-size:20px;
 }
@@ -246,13 +274,14 @@ p {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  border:1px solid #111;
+  border:1px solid #c4c4c4;
   padding: 10px;
 
 }
 
 .overflowHidden {
-    overflow:hidden;
+    overflow: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -290,14 +319,14 @@ h3 {
 }
 
 h2 {
-    font-size:24px;
+    font-size:30px;
     text-transform:uppercase;
 }
 
 .bottom-border {
     border-bottom: 1px dashed grey;
     overflow:auto;
-    padding:2px 2px;
+    padding:20px 2px;
 }
 
 .resultsHeading {
@@ -308,6 +337,8 @@ h2 {
 .subHead {
     font-size: 30px;
     font-weight: bold;
+    margin-bottom:20px;
+
 }
 
 .demos-text >p  {
@@ -315,7 +346,7 @@ h2 {
 }
 
 .popContainerNumber {
-    font-size: 30px;
+    font-size: 36px;
     padding: 10px 5px;
 }
 
@@ -335,7 +366,7 @@ h2 {
     border:1px solid grey;
     text-align:center;
     font-weight: bold;
-    margin:0 2% 0 0;
+    margin:0 3% 0 0;
     display:inline-block;
     width:49%;
 
@@ -358,14 +389,14 @@ h2 {
 }
 
 .small-text {
-    font-size: 8px;
+    font-size: 10px;
 }
 .bold {
     font-weight:bold;
 }
 
 .dataRow {
-    margin-top:10px;
+    margin-bottom:10px;
 }
 
 .padding {
@@ -377,7 +408,7 @@ h2 {
 
     background-repeat:no-repeat;
     background-position:50% 50%;
-    background-size: 40px;
+    background-size: 70px;
 
 }
 
@@ -386,18 +417,161 @@ h2 {
 
     background-repeat:no-repeat;
     background-position:50% 50%;
-    background-size: 50px;
+    background-size: 90px;
 
 }
+
 
 .map {
     padding:50% 0;
 }
-/*End of Index Styling*/
+
+.weather-container{ 
+ overflow:auto;
+ width:100%;
+ margin-bottom:10px;
+ }
+
+.image-shrink {
+    height:60px;
+    width:60px;
+}
+
+.weather-image {
+    float:left;
+}
+
+.weather-details {
+    float:left;
+    text-align: center;
+}
 
 
+.weather-details > h3 {
+    font-size:10px;
+    float:left;
+}
+.weather-details > h2 {
+    font-size:24px;
+}
+
+.weather-degrees {
+    padding:0
+    margin:0;
+    font-size:36px;
+    font-weight:bold;
+    float:left;
+    line-height:1;
+}
+.floatLeft {
+    float:left;
+}
+
+.weather-details-weather {
+    font-size:36px;
+    font-weight:bold;
+    text-transform: uppercase;
+    float:left;
+       line-height:1;
+}
+.weather-details-wind {
+ 
+    font-size:12px;
+}
+
+.pop-title {
+    background-color: #000a7a;
+}
+
+.occ-title {
+    background-color:#d33e1f;
+}
+
+#dwelling-title {
+    background-color: #000a7a;
+}
+
+.spouse-data {
+    text-align: center;
+    margin-top:80px;
+
+}
+.spouse-header {
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    color: #000a7a;
+
+}
+.spouse-data > p{
+    text-align: center;
+    font-size: 18px;
+}
+
+.infoHeader {
+    text-align:center;
+}
+
+.marginTopBot {
+    margin-top:10;
+    margin-bottom:15px;
+}
 
 
+.btn-list-link {
+    color:white;
+    background-color: #d84c2f;
+    margin-top:10px;
+    padding:6px 10px;
+    font-size:14px;
+}
+
+.table-border  {
+    border: 3px double #000a7a;
+    padding:10px;
+}
+
+.container-nav {
+    height:100px
+}
 
 
+@media (max-width: 991px) {
 
+    .card {
+        width: 40%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .card {
+        width: 45%;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .card {
+        width: 55%;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .card {
+        width: 65%;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+    .col-md-3 {
+        width: 70%;
+    }
+
+}

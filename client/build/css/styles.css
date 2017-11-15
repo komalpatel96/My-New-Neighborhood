@@ -1,0 +1,577 @@
+div {
+    /*border: 1px solid red;*/
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h2, h3, h1,h4 {
+    margin:0;
+    
+}
+
+#logo {
+    padding:0px;
+    margin:0px;
+    height:50px;
+}
+
+.guest {
+    font-size: 16px;
+}
+
+a:hover {
+    color: #000a7a;
+}
+.btn-results {
+    color:white;
+}
+
+.current-weather {
+    margin:0 10px;
+  
+    line-height:1;
+    font-size:20px;
+}
+h3 {
+    font-size:20px;
+}
+
+.population {
+    float:left;
+    position:relative;
+    z-index: 10;
+}
+
+.realEstateData {
+    float:left;
+
+    text-align:left;
+    margin-left:-50px;
+    z-index: 0;
+    overflow:auto;
+}
+
+a{
+        color: #000000;
+}
+a#modalCSS {
+    text-decoration: none;
+    position: relative;
+    font-size: 18px;
+    color: #292929;
+    padding-left: 10px;
+    margin-right: 15px; 
+    padding-bottom: 19px;
+}
+
+a#modalCSS:hover {
+    text-decoration: none;
+    color: #292929;
+    
+}
+
+a#modalCSS:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-bottom: 8px solid #d9534f;
+  transition: 0.4s;
+
+}
+
+a#modalCSS:hover:after {
+  width: 100%;
+}
+/*a:hover {
+    color: #d9534f;
+}*/
+
+.form-horizontal {
+    display: table;
+    margin: 0 auto;
+}
+
+.input-group-btn {
+    width: 0%;
+}
+
+.btn-danger {
+    border-radius: 0 !important;
+    border: 0px solid;
+    margin-left: 0px;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.city-search {
+    border: 0px solid;
+    border-radius: 0 !important;
+    height: 50px;
+    width: 700px;
+    font-size: 20px;
+    padding-left: 10px;
+    font-weight: lighter;
+    
+}
+
+.header-image img {
+    width: 100% !important;
+}
+.container-fluid {
+    background-color: #f1f1f1;
+    height: 50px;     
+}
+
+.container-buttons {
+    float: right;
+    margin-top: 8px;
+}
+
+.container-title {
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+/* Full-width input fields */ 
+#headerImage {
+    background-image: url("../images/suburbs.jpg");
+    height: 550px;
+    text-align: center;
+    /*color: white;*/
+    background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+}
+
+#surveyImage {
+    background-image: url("../images/survey.jpg");
+    height: 200px;
+    width: 350px;
+    background-size: 100%;
+}
+
+#searchImage {
+    background-image: url("../images/search.jpg");
+    height: 200px;
+    width: 350px;
+    background-size: 130%;
+}
+
+#movingImage {
+    background-image: url("../images/move_in.jpg");
+    height: 200px;
+    width: 350px;
+    background-size: 100%;
+}
+
+.description {
+    width: 350px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.example-image{
+    text-align: center;
+}
+
+#middleImage { 
+    color: #ffffff;
+    text-align: center;
+    /* The image used */
+    background-image: url("../images/roomies.jpg");
+    border-radius: 0px;
+
+    /* Set a specific height */
+    height: 350px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footerDiv {
+    height: 200px;
+    text-align: center;
+    padding-top: 40px;
+
+}
+
+.jumbotron h1 {
+    color: white;
+    font-size: 50px;
+    margin-top: 60px;
+}
+
+.jumbotron p {
+    color: white;
+    font-size: 25px;
+}
+
+.footerBtn {
+    height: 80px;
+    width: 80%;
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+.footerText {
+    margin-top: 0px;
+}
+
+.mainFooter {
+    background-color: #1e1e1e;
+    height: 100px;
+    text-align: center;
+    padding-top: 35px;
+    color: white;
+    font-size: 18px;
+}
+
+.navbar-brand {
+    height:40px;
+    line-height: 0px;
+}
+
+.affix {
+    top: 20px;
+    z-index: 9999 !important;
+  }
+
+  .centerContent{
+    text-align:center;
+  }
+
+/*.eventContainer {
+    overflow:auto ;
+}
+
+.event-list-container {
+    height:350px;
+    overflow:auto;
+
+}*/
+
+.bold {
+    font-style:bold;
+}
+
+p {
+    font-size:12px;
+}
+
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border:1px solid #c4c4c4;
+  padding: 10px;
+
+}
+
+.overflowHidden {
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+
+.card {
+flex: 0 0 auto;
+border-right: 1px dashed #999;
+padding:10px 20px;
+
+}
+
+
+.card > a:hover {
+color:red;
+text-decoration: none;
+
+}
+
+.card:hover {
+
+background-color: #FAF6FD;
+
+
+}
+
+.card:last-child {
+border:none;
+}
+
+h3 {
+    margin-top:0px;
+}
+
+.mapText {
+    margin:0px;
+}
+
+h2 {
+    font-size:30px;
+    text-transform:uppercase;
+}
+
+.bottom-border {
+    border-bottom: 1px dashed grey;
+    overflow:auto;
+    padding:20px 2px;
+}
+
+.resultsHeading {
+    font-size: 14px;
+    font-style:italic;
+}
+
+.subHead {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom:20px;
+
+}
+
+.demos-text >p  {
+    font-size:16px;
+}
+
+.popContainerNumber {
+    font-size: 36px;
+    padding: 10px 5px;
+}
+
+.popContainer  {
+    font-size:12px;
+    border:1px solid grey;
+    text-align:center;
+    font-weight: bold;
+    margin:0 0 0 0;
+    display:inline-block;
+    width:48%;
+
+}
+
+.popContainerLeft  {
+    font-size:12px;
+    border:1px solid grey;
+    text-align:center;
+    font-weight: bold;
+    margin:0 3% 0 0;
+    display:inline-block;
+    width:49%;
+
+}
+.popContainerHeading {
+    font-size:12px;
+    border:1px solid grey;
+    text-align:center;
+    font-weight: bold;
+    margin:0 5% 0 0;
+    display:inline-block;
+    width:100%;
+
+}
+
+.popContainerTag {
+    background-color: grey;
+    color:white;
+    padding:4px;
+}
+
+.small-text {
+    font-size: 10px;
+}
+.bold {
+    font-weight:bold;
+}
+
+.dataRow {
+    margin-bottom:10px;
+}
+
+.padding {
+    padding: 0px 0px 10px 0px;
+}
+
+.background-icon-mw {
+    background-image:url('../images/manWomanIcon.jpg');
+
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size: 70px;
+
+}
+
+.background-icon-dwell {
+    background-image:url('../images/dwellingIcon.png');
+
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size: 90px;
+
+}
+
+
+.map {
+    padding:50% 0;
+}
+
+.weather-container{ 
+ overflow:auto;
+ width:100%;
+ margin-bottom:10px;
+ }
+
+.image-shrink {
+    height:60px;
+    width:60px;
+}
+
+.weather-image {
+    float:left;
+}
+
+.weather-details {
+    float:left;
+    text-align: center;
+}
+
+
+.weather-details > h3 {
+    font-size:10px;
+    float:left;
+}
+.weather-details > h2 {
+    font-size:24px;
+}
+
+.weather-degrees {
+    padding:0
+    margin:0;
+    font-size:36px;
+    font-weight:bold;
+    float:left;
+    line-height:1;
+}
+.floatLeft {
+    float:left;
+}
+
+.weather-details-weather {
+    font-size:36px;
+    font-weight:bold;
+    text-transform: uppercase;
+    float:left;
+       line-height:1;
+}
+.weather-details-wind {
+ 
+    font-size:12px;
+}
+
+.pop-title {
+    background-color: #000a7a;
+}
+
+.occ-title {
+    background-color:#d33e1f;
+}
+
+#dwelling-title {
+    background-color: #000a7a;
+}
+
+.spouse-data {
+    text-align: center;
+    margin-top:80px;
+
+}
+.spouse-header {
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    color: #000a7a;
+
+}
+.spouse-data > p{
+    text-align: center;
+    font-size: 18px;
+}
+
+.infoHeader {
+    text-align:center;
+}
+
+.marginTopBot {
+    margin-top:10;
+    margin-bottom:15px;
+}
+
+
+.btn-list-link {
+    color:white;
+    background-color: #d84c2f;
+    margin-top:10px;
+    padding:6px 10px;
+    font-size:14px;
+}
+
+.table-border  {
+    border: 3px double #000a7a;
+    padding:10px;
+}
+
+.container-nav {
+    height:100px
+}
+
+
+@media (max-width: 991px) {
+
+    .card {
+        width: 40%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .card {
+        width: 45%;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .card {
+        width: 55%;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .card {
+        width: 65%;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+    .col-md-3 {
+        width: 70%;
+    }
+
+}

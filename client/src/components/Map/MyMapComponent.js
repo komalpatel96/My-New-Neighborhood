@@ -1,7 +1,7 @@
 import React from 'react';
 
 const _ = require("lodash");
-const { compose, withProps, lifecycle, withStateHandlers  } = require("recompose");
+const { compose, withProps, lifecycle  } = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
@@ -15,9 +15,9 @@ const google = window.google;
 
 export const MapWithASearchBox = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBi38CXkWj_pgUUI2QKeNOjI2rghEKPZr4&v=3.exp&libraries=geometry,drawing,places",
+    // googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBi38CXkWj_pgUUI2QKeNOjI2rghEKPZr4&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{height:`300px`, width: `600px` }} />,
+    containerElement: <div style={{ height: `600px` ,width:`100%`}} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   lifecycle({
@@ -38,10 +38,19 @@ export const MapWithASearchBox = compose(
           })
         },
         
-        onToggleOpen: ({ isOpen }) => () => ({
-          isOpen: false,
-          })
-        ,
+        onToggleOpen2: index => e => {
+          let newMarkers = [...this.state.markers];
+
+          var open = newMarkers[index].isOpen;
+
+          newMarkers[index].isOpen = !open;
+
+          // sets the new state by making a copy of the state and merges it with the rest of the arguments
+          this.setState({
+            ...this.state,
+            markers: newMarkers
+          });
+        },
         getInitialState() {
         return { showInfoWindow: false }
         },
@@ -58,15 +67,11 @@ export const MapWithASearchBox = compose(
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
           const bounds = new google.maps.LatLngBounds();
-          console.log("PLACES -------")
-          console.log(places)
           this.setState({
             places: places
           });
 
           places.forEach(place => {
-            console.log("place:-----------------")
-            console.log(place);
             if (place.geometry.viewport) {
               bounds.union(place.geometry.viewport)
             } else {
@@ -75,6 +80,9 @@ export const MapWithASearchBox = compose(
           });
           const nextMarkers = places.map(place => ({
             position: place.geometry.location,
+            title: place.title,
+            name: place.name,
+            isOpen: false
           }));
           const nextCenter = _.get(nextMarkers, '0.position', this.state.center);
 
@@ -87,22 +95,13 @@ export const MapWithASearchBox = compose(
       })
     },
   }),
-  withStateHandlers(() => ({
-    isOpen: false,
-  }), {
-    onToggleOpen: ({ isOpen }) => () => ({
-      isOpen: !isOpen,
-    })
-  }),
   withScriptjs,
   withGoogleMap
 )(props => {
 
-  console.log(props);
-
   return (<GoogleMap
     ref={props.onMapMounted}
-    zoom={9}
+    zoom={12}
     center={props.centerMe}
     onBoundsChanged={props.onBoundsChanged}
     places={props.places}
@@ -134,35 +133,29 @@ export const MapWithASearchBox = compose(
       />
     </SearchBox>
 
-    {!props.places ? null: props.places.map((marker, index) =>
-      <Marker 
+    {!props.markers ? null: props.markers.map((marker, index) => {
+      return (<Marker 
         key={index} 
-        position={marker.geometry.location}
-        onClick={props.onToggleOpen}
+        position={marker.position}
+        onClick={
+          props.onToggleOpen2(index)
+        }
         >
+      
 
-      <InfoWindow isOpen= {false} onCloseClick={props.onToggleOpen}>
-            <div>
+    {marker.isOpen && <InfoWindow key={index} title={props.title}
+        onCloseClick={props.onToggleOpen2(index)}
+        options={{ closeBoxURL: ``, enableEventPropagation: true }}
+      >
+        <div>
               {marker.name}
             </div>
-      </InfoWindow>
+      </InfoWindow>}
 
-      </Marker>
+      </Marker>);}
     )}
 
-    {props.isMarkerShown && 
-      <Marker 
-        position={props.centerMe}
-      >
-      <InfoWindow 
-        title={props.title}
-        >
-            <div>
-              {props.title}
-            </div>
-      </InfoWindow>
-      </Marker>
-    }
+
 
   </GoogleMap>
 );

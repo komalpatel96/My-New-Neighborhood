@@ -25,4 +25,9 @@
 
 #errorMessage {
   color: red;
+  text-align: center;
+}
+
+#loginButton, #signupButton, #logoutButton, #accountButton {
+  margin-right: 12px;
 }

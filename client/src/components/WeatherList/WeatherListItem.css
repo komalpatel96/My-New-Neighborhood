@@ -1,12 +1,16 @@
 img {
-	max-width: 300px;
+  max-width: 300px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 .row {
-	outline: black;
+  outline: black;
 }
+
+
+
+
 
 /*if ({weatherStats.weatherIcon} === "01d") {
                         $("#icon").addClass("sunny");
@@ -30,7 +34,7 @@ img {
                         $("#icon").addClass("fog");
             }}*/
 .text-center {
-	text-align: center;
+  text-align: center;
 }
 
 /* .icon{
@@ -51,134 +55,147 @@ img {
   /* Begin Weather Icon Classes*/
 [class="01d"]  {
       background-image: url("../../images/weather-icons.png");
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
-  	  padding-bottom: 0;
+      padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -305px -180px; 
+      background-position: -45px -25px; 
     }
 
 [class="01n"]{
       background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -495px -620px; 
+      background-position: -78px -99px; 
   }
 
 [class="02d"]  {
       background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
-  	  padding-bottom: 0;
+      padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -498px -183px; 
+      background-position: -77px -25px; 
     }
 
 [class="02n"] {
       background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -700px -183px; 
+      background-position: -111px -25px; 
   }
 
 [class="03d"], [class="03n"], [class="04d"], [class="04n"]{
       background-image: url('../../images/weather-icons.png');
-      height:180px;
-   	  width:180px;
-    	margin:0 auto;
-    	padding-top: 0;
-    	padding-bottom: 0;
-      background-repeat: no-repeat;
-      background-position: -112px -185px; 
-  }
-
-[class="09d"], [class="09n"]{
-      background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -304px -405px; 
+      background-position: -13px -25px; 
+  }
+
+[class="09d"]{
+      background-image: url('../../images/weather-icons.png');
+      background-size: 500%;
+      height:40px;
+      width:40px;
+      margin:0 auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      background-repeat: no-repeat;
+      background-position: -144px -25px; 
+  }
+
+  [class="09n"]{
+      background-image: url('../../images/weather-icons.png');
+      background-size: 500%;
+      height:40px;
+      width:40px;
+      margin:0 auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      background-repeat: no-repeat;
+      background-position: -144px -62px; 
   }
 
 [class="13d"], [class="13n"]  {
       background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -498px -405px; 
+      background-position: -78px -62px; 
 
   }
   
 [class="10d"]  {
       background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
-      margin:0 auto;
-      padding-top: 0;
-  	  padding-bottom: 0;
-      background-repeat: no-repeat;
-      background-position: -898px -185px; 
-  }
-
-[class="10n"]  {
-    background-image: url('../../images/weather-icons.png');
-    height:180px;
-    width:180px;
-    margin:0 auto;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-repeat: no-repeat;
-    background-position: -898px -410px; 
-}
-
-[class="11d"], [class="11n"] {
-      background-image: url('../../images/weather-icons.png');
-      height:180px;
-      width:180px;
+      background-size: 500%;
+      height:40px;
+      width:40px;
       margin:0 auto;
       padding-top: 0;
       padding-bottom: 0;
       background-repeat: no-repeat;
-      background-position: -112px -405px; 
+      background-position: -45px -62px; 
   }
 
-[class="50d"], [class="50n"]{
+[class="10n"]  {
     background-image: url('../../images/weather-icons.png');
-    height:180px;
-    width:180px;
-    margin:0 auto;
-    padding-top: 0;
-  	padding-bottom: 0;
-    background-repeat: no-repeat;
-    background-position: -302px -620px; 
-  }
-
-  [class="615"], [class="616"]{
-    background-image: url('../../images/weather-icons.png');
-    height:180px;
-    width:180px;
+    background-size: 500%;
+    height:40px;
+    width:40px;
     margin:0 auto;
     padding-top: 0;
     padding-bottom: 0;
     background-repeat: no-repeat;
-    background-position: -113px -620px; 
+    background-position: -45px -62px; 
+}
+
+[class="11d"], [class="11n"] {
+      background-image: url('../../images/weather-icons.png');
+      background-size: 500%;
+      height:40px;
+      width:40px;
+      margin:0 auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      background-repeat: no-repeat;
+      background-position: -14px -62px; 
   }
+
+[class="50d"], [class="50n"]{
+    background-image: url('../../images/weather-icons.png');
+    background-size: 500%;
+    height:40px;
+    width:40px;
+    margin:0 auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-repeat: no-repeat;
+    background-position: -45px -96px; 
+  }
+
   /* End Weather Icon Classes*/

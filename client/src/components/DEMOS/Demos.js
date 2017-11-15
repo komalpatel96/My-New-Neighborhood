@@ -1,7 +1,4 @@
-
-import React, {Component}from 'react';
-import ReactDOM from 'react-dom';
-import {VictoryLabel, VictoryPie , VictoryChart, VictoryContainer, VictoryBar,VictoryGroup,VictoryVoronoiContainer,VictoryTooltip, VictoryLegend} from "victory";
+import React from 'react';
 
 
 export class Demos extends React.Component {
@@ -13,13 +10,14 @@ return (
 
 
 <div className="dataRow">
-      <div className="popContainerHeading"> 
+      <div className="popContainerHeading">
+      <div className="popContainerTag pop-title">
+      Population
+      </div> 
       <div className="popContainerNumber">
       {this.props.data.population}
       </div>
-      <div className="popContainerTag">
-      Population
-      </div>
+
       </div>
 
 </div>
@@ -29,21 +27,23 @@ return (
 <div className={'dataRow'}>
 
       <div className="popContainerLeft"> 
+      <div className="popContainerTag pop-title">
+      Income
+      </div>
       <div className="popContainerNumber">
       {this.props.data.income}
       </div>
-      <div className="popContainerTag">
-      Income
-      </div>
+
       </div>
 
       <div className="popContainer"> 
+       <div className="popContainerTag pop-title">
+      Income <span className="small-text"> (per cap)</span>
+      </div>
       <div className="popContainerNumber">
       {this.props.data.incomePerCap}
       </div>
-      <div className="popContainerTag">
-      Income <span className="small-text"> (per cap)</span>
-      </div>
+     
       </div>
 
 </div>
@@ -51,12 +51,13 @@ return (
 <div className={'dataRow'}>
 
 <div className="popContainerHeading"> 
+<div  className="popContainerTag occ-title">
+Total Dwellings
+</div>
 <div className="popContainerNumber">
 {this.props.data.BRTotal}
 </div>
-<div className="popContainerTag">
-Total Dwellings
-</div>
+
 </div>
 
 </div>
@@ -64,21 +65,23 @@ Total Dwellings
 <div className={'dataRow'}>
 
       <div className="popContainerLeft"> 
+      <div className="popContainerTag occ-title">
+      Owner Occupied
+      </div> 
       <div className="popContainerNumber">
       {this.props.data.OCCowner}
       </div>
-      <div className="popContainerTag">
-      Owner Occupied
-      </div>
+
       </div>
 
-      <div className="popContainer"> 
+      <div className="popContainer">
+       <div className="popContainerTag occ-title">
+      Renter Occupied
+      </div> 
       <div className="popContainerNumber">
       {this.props.data.OCCrenter}
       </div>
-      <div className="popContainerTag">
-      Renter Occupied
-      </div>
+     
       </div>
 
 </div>

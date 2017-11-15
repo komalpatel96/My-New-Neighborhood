@@ -1,5 +1,5 @@
 const passport = require('passport')
-const LocalStrategy = require('./localStrategy')
+const LocalStrategy = require('./localstrategy')
 // const GoogleStratgey = require('./googleStrategy')
 const User = require('../db/models/user')
 

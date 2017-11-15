@@ -1,6 +1,6 @@
 import React from "react";
 import Thumbnail from "../Thumbnail";
-import { Container, Row, Col } from "../Grid";
+
 
 export const EventListItem = props => (
  
@@ -9,13 +9,13 @@ export const EventListItem = props => (
      
         <h3 className="bold">{props.name} </h3>
         <p>{props.description}</p>
-        <a rel="noreferrer noopener" target="_blank" href={props.link}>
-          Link to Event
+         <a rel="noreferrer noopener" target="_blank" href={props.link}>
+         <button className="btn btn-list-link btn-sm">
+       
+          Get Info
+          </button>
         </a>
      
     </div>
  
 );
-
-
-// <h4>{props.description.substring(0, 220)+"..."}</h4>

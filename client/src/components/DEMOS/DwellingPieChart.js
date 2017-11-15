@@ -1,11 +1,7 @@
+import React from 'react';
 
-import React, {Component}from 'react';
-import ReactDOM from 'react-dom';
-import {VictoryLabel, VictoryPie , VictoryTooltip,VictoryVoronoiContainer} from "victory";
+import {VictoryPie , VictoryTooltip,VictoryVoronoiContainer} from "victory";
 
-
-import { Container, Row, Col } from "../Grid";
-import API from "../../utils/API";
 
 
 export class DwellingPieChart extends React.Component {

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// The getRecipes method retrieves recipes from the server
-// It accepts a "query" or term to search the recipe api for
 export default {
   getLocation: function(query) {
   	console.log(query);
@@ -13,9 +11,6 @@ export default {
     	})
   },
   getCensus: function(query) {
-    // console.log("inside getCENSUS")
-    // console.log(query);
-
     return axios.get("/api/census", { params: { for: "zip code tabulation area:" + query }});
   },
 
@@ -43,7 +38,7 @@ export default {
     return axios.get("/api/yelpRestaurants", {params: {location: query}});
   },
 
-  getSchools: function(query) {
-     return axios.get("/api/schools", {params: {st: query}});
+  getSchools: function(query, query2) {
+     return axios.get("/api/schools", {params: {state: query, zip: query2}});
   }
 };
