@@ -39,7 +39,7 @@ My New Neighborhood is an app that allows users to enter any location in the US 
 
 ## Developers
 
-* **Matthew Beebe** - *AJAX Requests, APIs, React, JSX, CSS* - [Matthew Beebe](https://github.com/)
-* **Louis Hellinger** - *AJAX Requests, APIs, React, JSX, CSS, Responsive Design, Presentation* - [Louis Hellinger](https://github.com/louisHellinger)
-* **Komal Patel** - *Google Maps Implementation, AJAX Requests, APIs, React, JSX* - [Komal Patel](https://github.com/komalpatel96)
-* **Alexander Paulino** - *AJAX Requests, APIs, React, JSX, Troubleshooting* - [Alexander](https://github.com/alexanderpaulino)
+* [**Matthew Beebe**](https://github.com/) - *AJAX Requests, APIs, React, JSX, CSS*
+* [**Louis Hellinger**](https://github.com/louisHellinger) - *AJAX Requests, APIs, React, JSX, CSS, Responsive Design, Presentation*
+* [**Komal Patel**](https://github.com/komalpatel96) - *Google Maps Implementation, AJAX Requests, APIs, React, JSX*
+* [**Alexander Paulino**](https://github.com/alexanderpaulino) - *AJAX Requests, APIs, React, JSX, Troubleshooting*
