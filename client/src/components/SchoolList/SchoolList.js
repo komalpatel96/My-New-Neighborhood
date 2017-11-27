@@ -3,8 +3,8 @@ import React from "react";
 // RecipeList renders a bootstrap list item
 export const SchoolList = props => 
 	<div>
-	<h2>Great Schools! Data</h2>
-	<table className='table table-striped'>
+	<h2>LOCAL SCHOOL DATA - Provided by Great Schools!</h2>
+	<table className='table table-striped table-border'>
 	<thead>
       <tr>
         <th>School Name</th>

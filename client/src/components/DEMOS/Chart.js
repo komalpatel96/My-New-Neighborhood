@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {VictoryLabel, VictoryPie , VictoryChart, VictoryContainer, VictoryBar,VictoryGroup,VictoryVoronoiContainer,VictoryTooltip, VictoryLegend} from "victory";
+import React from 'react';
 
-import { Demos } from "./Demos";
+import {VictoryChart, VictoryBar,VictoryGroup,VictoryVoronoiContainer,VictoryTooltip} from "victory";
 
 export class Chart extends React.Component {
 
@@ -10,7 +8,33 @@ export class Chart extends React.Component {
    
   return (
 
+<div>
+<h2 className="centerContent">Marital Status by Gender
+     </h2>
+
+<div className="col-lg-4 col-md-4 col-sm-4 col-xs-12 spouse-data"> 
+ <span className="spouse-header">MARRIED</span>
+<p>Men: {this.props.data.maleMarried} | Women: {this.props.data.femaleMarried} </p>
+
+
+<span className="spouse-header">SINGLE</span>
+<p>Men: {this.props.data.maleSingle} | Women: {this.props.data.femaleSingle}</p>
+
+<span className="spouse-header">DIVORCED</span>
+<p>Men: {this.props.data.maleDivorced} | Women:  {this.props.data.femaleDivorced}</p>
+
+<span className="spouse-header">WIDOWED</span>
+<p>Men: {this.props.data.maleWidowed} | Women:  {this.props.data.femaleWidowed}</p>
+
+
+<span className="spouse-header">SEPARATED</span>
+<p>Men: {this.props.data.maleSeparated} | Women: {this.props.data.femaleSeparated}</p>
+
+</div>
+
+<div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 <VictoryChart 
+
 responsive={true}
 domainPadding={{ x: 50}}
 title="Marital Status"
@@ -30,26 +54,25 @@ containerComponent={
 }
 offset={20} 
 colorScale={["navy", "tomato"]}
-padding={40}
-fontSize={8} 
+// padding={40}
 
 > 
 <VictoryBar 
 
     data={[ 
-      { x: "married", y: parseInt(this.props.data.maleMarried) },
-      { x: "single", y: parseInt(this.props.data.maleSingle)},
-      { x: "divorced", y: parseInt(this.props.data.maleDivorced) },
-      { x: "widowed", y: parseInt(this.props.data.maleWidowed) },
-      { x: "separated", y: parseInt(this.props.data.maleSeparated) } ]}
-    categories={{ x: ["married", "single", "divorced","widowed","separated"] }}
+      { x: "Married", y: parseInt(this.props.data.maleMarried, 10) },
+      { x: "Single", y: parseInt(this.props.data.maleSingle, 10)},
+      { x: "Divorced", y: parseInt(this.props.data.maleDivorced, 10) },
+      { x: "Widowed", y: parseInt(this.props.data.maleWidowed,10) },
+      { x: "Separated", y: parseInt(this.props.data.maleSeparated, 10) } ]}
+    categories={{ x: ["Married", "Single", "Divorced","Widowed","Separated"] }}
     
     labelComponent={
 
     <VictoryTooltip
     pointerLength={10}
     activateData={false}
-    text={(datum) =>  datum.x + " men" + "\n" + datum.y}
+    text={(datum) =>  datum.x + " Men\n" + datum.y}
     />
   
 }
@@ -90,18 +113,18 @@ fontSize={8}
 
 <VictoryBar 
   data={[
-    { x: "married", y: parseInt(this.props.data.femaleMarried)},
-    { x: "single", y: parseInt(this.props.data.femaleSingle)},
-    { x: "divorced", y: parseInt(this.props.data.femaleDivorced) },
-    { x: "widowed", y: parseInt(this.props.data.femaleWidowed) },
-    { x: "separated", y: parseInt(this.props.data.femaleSeparated) } 
+    { x: "Married", y: parseInt(this.props.data.femaleMarried, 10)},
+    { x: "Single", y: parseInt(this.props.data.femaleSingle, 10)},
+    { x: "Divorced", y: parseInt(this.props.data.femaleDivorced, 10) },
+    { x: "Widowed", y: parseInt(this.props.data.femaleWidowed, 10) },
+    { x: "Separated", y: parseInt(this.props.data.femaleSeparated, 10) } 
     ]}
     labelComponent={
 
   <VictoryTooltip
   activateData={true}
    pointerLength={10}
-   text={(datum) =>  datum.x + " women" + "\n" + datum.y}
+   text={(datum) =>  datum.x + " Women\n" + datum.y}
 />
     }
   style={{
@@ -141,6 +164,8 @@ fontSize={8}
 </VictoryGroup>
 
 </VictoryChart>
+</div>
+</div>
 
     )//end of return
   }// end of render

@@ -2,7 +2,6 @@ import React from "react";
 import Modal from 'react-modal';
 import axios from 'axios';
 import Header from './Header.js';
-import googleButton from './btn_google_signin_dark_normal_web.png';
 import './nav.css';
  
 const customStyles = {
@@ -12,7 +11,8 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    width                 : '40%'
   }
 };
 
@@ -41,7 +41,13 @@ export default class Nav extends React.Component {
       hideLogout: true,
       hideLogin: true,
       hideSignup: true,
-      hideError: true
+
+      usernameError: false,
+      emailError: false,
+      passwordError: false,
+      ageError: false,
+
+      loginError: false
 
     };
  
@@ -63,7 +69,7 @@ export default class Nav extends React.Component {
 
   componentDidMount() {
     axios.get('/auth/user').then(response => {
-      console.log(response.data)
+      
       if (!!response.data.user) {
         console.log('A user is currently logged in')
         this.setState({
@@ -97,7 +103,49 @@ export default class Nav extends React.Component {
 
   handleSignupSubmit(event) {
     event.preventDefault()
-    // TODO - validate!
+
+    var letterCapital = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
+    
+    if (this.state.usernameInput.length < 6){
+      this.setState({
+        usernameError: true,
+        passwordError: false,
+        emailError: false,
+        ageError: false,
+      })
+      return false;
+    }
+
+    if (this.state.passwordInput.length < 6 || !this.state.passwordInput.match(letterCapital)){
+      this.setState({
+        usernameError: false,
+        passwordError: true,
+        emailError: false,
+        ageError: false,
+      })
+      return false;
+    }
+
+    if (!this.state.emailInput.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)){
+        this.setState({
+        usernameError: false,
+        passwordError: false,
+        emailError: true,
+        ageError: false,
+      })
+      return false;
+    }
+
+    if (parseInt(this.state.ageInput, 10) < 18 ){
+      this.setState({
+        usernameError: false,
+        passwordError: false,
+        emailError: false,
+        ageError: true,
+      })
+      return false;
+    }
+
     axios
     .post('/auth/signup', {
       username: this.state.usernameInput,
@@ -107,7 +155,6 @@ export default class Nav extends React.Component {
       age: this.state.ageInput
     })
     .then(response => {
-      console.log(response)
       if (!response.data.errmsg) {
         console.log('User added.')
         this.setState({
@@ -126,7 +173,6 @@ export default class Nav extends React.Component {
 
   handleLoginSubmit(event) {
     event.preventDefault()
-    console.log('handleLoginSubmit')
     this._login(this.state.usernameLogin, this.state.passwordLogin)
   }
  
@@ -150,7 +196,7 @@ export default class Nav extends React.Component {
     event.preventDefault()
     console.log('logging out')
     axios.post('/auth/logout').then(response => {
-      console.log(response.data)
+      
       if (response.status === 200) {
         this.setState({
           loggedIn: false,
@@ -171,8 +217,6 @@ export default class Nav extends React.Component {
         password
       })
       .then(response => {
-        console.log(response);
-        console.log(response.status);
         if (response.status === 200) {
           this.setState({
             loggedIn: true,
@@ -182,13 +226,13 @@ export default class Nav extends React.Component {
             hideLogin: true,
             hideSignup: true,
             modal1IsOpen: false,
-            hideError: true,
+            loginError: false,
             usernameLogin: "",
             passwordLogin: ""
           })
         } else {
           this.setState({
-            hideError: false
+            loginError: true,
           })
         }
       })
@@ -201,11 +245,17 @@ export default class Nav extends React.Component {
 
         <Header user={this.state.user} />
         <div className="container-buttons">
-          <a className={this.state.hideLogin ? 'hidden' : ''} onClick={this.openModal1}> LOGIN </a>
-          <a className={this.state.hideSignup ? 'hidden' : ''} onClick={this.openModal2}>SIGN UP</a>
-          <a className={this.state.hideAccount ? 'hidden' : ''}>ACCOUNT</a>
-          <a className={this.state.hideLogout ? 'hidden' : ''} onClick={this._logout}>LOGOUT</a>
+        <a id="loginButton" className={this.state.hideLogin ? 'hidden' : ''} onClick={this.openModal1}> LOGIN </a>
+          <a id="signupButton" className={this.state.hideSignup ? 'hidden' : ''} onClick={this.openModal2}>SIGN UP</a>
+          <a id="accountButton" className={this.state.hideAccount ? 'hidden' : ''}>ACCOUNT</a>
+          <a id="logoutButton" className={this.state.hideLogout ? 'hidden' : ''} onClick={this._logout}>LOGOUT</a>
         </div>
+
+        <div>
+  
+
+
+         </div>
           <div>
             
           <Modal
@@ -226,7 +276,8 @@ export default class Nav extends React.Component {
                   type="text" 
                   className="form-control" 
                   name="usernameLogin" 
-                  placeholder="Username" 
+                  placeholder="Username"
+                  maxLength="16" 
                   value={this.state.usernameLogin} 
                   onChange={this.handleChange}
                   required></input>
@@ -236,7 +287,8 @@ export default class Nav extends React.Component {
                   type="password" 
                   className="form-control" 
                   name="passwordLogin" 
-                  placeholder="Password" 
+                  placeholder="Password"
+                  maxLength="20" 
                   value={this.state.passwordLogin} 
                   onChange={this.handleChange}
                   required></input>
@@ -249,7 +301,7 @@ export default class Nav extends React.Component {
                 Login</button>
               </form>
               <hr></hr>
-              <p id="errorMessage" className={this.state.hideError ? 'hidden' : ''}>An error has occurred. Please try again.</p>
+              <p id="errorMessage" className={this.state.loginError ? '' : 'hidden'}>Please enter valid account credentials.</p>
             </div>
           </Modal>
           
@@ -271,7 +323,8 @@ export default class Nav extends React.Component {
                 type="text" 
                 className="form-control"
                 name="usernameInput" 
-                placeholder="Username" 
+                placeholder="Username"
+                maxLength="16" 
                 value={this.state.usernameInput} 
                 onChange={this.handleChange}
                 required></input>
@@ -281,8 +334,9 @@ export default class Nav extends React.Component {
                 type="password" 
                 className="form-control" 
                 name="passwordInput" 
-                placeholder="Password" 
-                value={this.state.passwordInput} 
+                placeholder="Password"
+                maxLength="20"
+                value={this.state.passwordInput}
                 onChange={this.handleChange}
                 required></input>
               </div>
@@ -291,7 +345,8 @@ export default class Nav extends React.Component {
                 type="text" 
                 className="form-control" 
                 name="nameInput" 
-                placeholder="Name" 
+                placeholder="Name"
+                maxLength="30"
                 value={this.state.nameInput} 
                 onChange={this.handleChange}
                 required></input>
@@ -301,7 +356,7 @@ export default class Nav extends React.Component {
                 type="email" 
                 className="form-control" 
                 name="emailInput" 
-                placeholder="Email" 
+                placeholder="Email"
                 value={this.state.emailInput} 
                 onChange={this.handleChange}
                 required></input>
@@ -311,7 +366,8 @@ export default class Nav extends React.Component {
                 type="number" 
                 className="form-control"
                 name="ageInput" 
-                placeholder="Age" 
+                placeholder="Age"
+                maxLength="3"
                 value={this.state.ageInput} 
                 onChange={this.handleChange}
                 required></input>
@@ -323,6 +379,12 @@ export default class Nav extends React.Component {
               onClick={this.handleSignupSubmit}>
               Sign Up</button>
             </form>
+            <hr></hr>
+            <p id="errorMessage" className={this.state.usernameError ? '' : 'hidden'}>Please enter a username at least 6 characters in length.</p>
+            <p id="errorMessage" className={this.state.passwordError ? '' : 'hidden'}>Please enter a password at least 6 characters in length containing<br>  
+            </br>at least one number, capital letter, and special character.</p>
+            <p id="errorMessage" className={this.state.emailError ? '' : 'hidden'}>Please enter a valid e-mail address in the following format: name@email.com.</p>
+            <p id="errorMessage" className={this.state.ageError ? '' : 'hidden'}>You must be 18 years or older to create an account.</p>
            </div>
           </Modal>
         </div>

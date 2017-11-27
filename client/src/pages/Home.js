@@ -2,15 +2,6 @@ import React, { Component } from "react";
 import Info from "./Info";
 import Jumbotron from "../components/Layout/Jumbotron";
 import API from "../utils/API";
-import { EventList, EventListItem } from "../components/EventList";
-import { WeatherList, WeatherListItem } from "../components/WeatherList";
-import { SchoolList, SchoolListItem } from "../components/SchoolList";
-import { YelpThingsList, YelpThingsListItem } from "../components/YelpThingsList";
-import { YelpMovingList, YelpMovingListItem } from "../components/YelpMovingList";
-import { YelpRestaurantsList, YelpRestaurantsListItem } from "../components/YelpRestaurantsList";
-import { Container, Row, Col } from "../components/Grid";
-import { Demos, Chart,PieChart } from "../components/DEMOS";
-
 
 let eventArray = [];
 
@@ -63,6 +54,7 @@ class Home extends Component {
     maleAge: 0,
     femaleAge: 0,
     DwellingInfo:[],
+    cityState: ""
   };
 
   handleInputChange = event => {
@@ -70,7 +62,7 @@ class Home extends Component {
   };
 
   handleLocationSubmit = event => {
-    // When the form is submitted, prevent its default behavior, get location update the location state
+    
     event.preventDefault();
     API.getLocation(this.state.locationSearch)
     .then(res =>{
@@ -80,16 +72,16 @@ class Home extends Component {
     }).then( event => {
       API.getLocation(this.state.locationSearch)
       .then(res => {
-        console.log(res.data);
-        let postalCodes = res.data.results[0].address_components.filter(function (it) {return it.types.indexOf('postal_code') != -1;}).map(function (it) {return it.long_name;});
-        console.log("POSTAL CODE BELOW")
-        console.log(postalCodes[0]);
+        
+        let postalCodes = res.data.results[0].address_components.filter(function (it) {return it.types.indexOf('postal_code') !== -1;}).map(function (it) {return it.long_name;});
         let str = res.data.results[0].formatted_address;
-        console.log(str);
-        let str2 = str.split(",")
-        console.log(str2);
-        let saveState = str2[2].split(" ")
-        console.log(saveState);
+        let str2 = str.split(",");
+        let saveState = str2[2].split(" ");
+        
+        let string = res.data.results[0].formatted_address;
+        let resp = string.split(",").reverse();
+        var cityState = resp[2] + ", " + resp[1];
+
         this.setState({
           location: this.state.locationSearch, 
           results: res.data,
@@ -97,6 +89,7 @@ class Home extends Component {
           longitude: res.data.results[0].geometry.location.lng,
           zipCode: postalCodes[0],
           state: saveState[1],
+          cityState: cityState,
           redirectTo: "/info"
           });
     }).then(events => {
@@ -118,14 +111,12 @@ class Home extends Component {
          eventArray.push(eventObject)
         }
        }
-       console.log(eventArray);
+       
        this.setState({ eventResults: eventArray })
       })
     }).then(query => {
       API.getWeather(this.state.zipCode)
       .then(res => {
-
-        console.log(res.data);
 
         let weatherObject = {
     
@@ -146,9 +137,6 @@ class Home extends Component {
       API.getYelpThings(this.state.zipCode)
 
       .then(res => {
-        
-        console.log("vvv YELP DATA vvv")
-        console.log(res.data);
         
         let yelpThingsArray = [];
 
@@ -197,9 +185,6 @@ class Home extends Component {
       API.getYelpMoving(this.state.zipCode)
 
       .then(res => {
-        
-        console.log("MOVING DATA")
-        console.log(res.data)
 
         let yelpMovingArray = [];
 
@@ -224,8 +209,6 @@ class Home extends Component {
       API.getSchools(this.state.state, this.state.zipCode)
 
       .then(res => {
-        console.log("SCHOOL DATA")
-        console.log(res.data)
 
         let schoolsArray = [];
 
@@ -244,21 +227,17 @@ class Home extends Component {
 
           schoolsArray.push(schoolsObject)
         }
-        console.log(schoolsArray)
+        
         this.setState({ schoolsResults: schoolsArray });
-        console.log(this.state.schoolsResults)
+        
       })
     }).then(query1=>{
       API.getCensus(this.state.zipCode)
-  // .then(res => this.setState({ recipes: res.data }))
   .then(res => { 
-    console.log(res.data);
 
 var updatedAge = parseFloat(res.data[1][6]).toFixed(2);
 var updatedFemaleAge = parseFloat(res.data[1][7]).toFixed(2);
 var updatedMaleAge = parseFloat(res.data[1][8]).toFixed(2);
-
-console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge);
 
   var demos = {
     name: res.data[1][0],
@@ -337,22 +316,9 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
   {name: "FiveBedrooms", total:res.data[1][33]}, 
   ]
 
-  // var dwellings = [];
-
-  // for (var i = 0; i < dwellingsArr.length; i++ ){
-
-  // var tempNumber=  (dwellingsArr[i].total * 100) / demos.BRTotal;
-  
-  // dwellingsArr[i].average = tempNumber.toFixed(2);
-  // console.log(dwellingsArr[i]);
-
-  // }
-
         this.setState({
           demo: demos,
           gender:genderSet,
-          // maleMaritalStatus: maleMaritalStatus,
-          // femaleMaritalStatus: femaleMaritalStatus,
           femaleMarried: femaleMarried,
           maleMarried: maleMarried,
           maleDivorced: maleDivorced,
@@ -383,11 +349,6 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
           DwellingInfo: dwellingsArr
         });
 
-
-    console.log("==========================  this is state.demo");
-    console.log(this.state.DwellingInfo);
-        console.log(this.state.demo);
-        console.log(this.state.maleMarried);
   })
 })
     }).catch(err => console.log(err));
@@ -434,6 +395,7 @@ console.log(updatedAge + "  " + updatedFemaleAge + "  " + "  " + updatedMaleAge)
         YMdata={this.state.yelpMovingResults}
         CensusData={this.state}
         Sdata={this.state.schoolsResults}
+        CityState={this.state.cityState}
 
          >
       </Info>

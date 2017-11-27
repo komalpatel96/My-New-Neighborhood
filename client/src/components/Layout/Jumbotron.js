@@ -1,7 +1,6 @@
 import React from "react";
 import Input from "./Input";
 import { Row, Col } from "../Grid";
-import {Link} from 'react-router-dom'
 
 import Button from "./Button";
 
@@ -9,7 +8,6 @@ import Button from "./Button";
 const Jumbotron = props => {
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     props.setRedirect("/info");
     props.handleLocationSubmit(event);
   }
@@ -18,8 +16,8 @@ const Jumbotron = props => {
     // <Container>
     <div className="jumbotron" id="headerImage">
       <div className="container-title">
-       <h1>Stop Dreaming, Start Searching</h1>
-         <p> The neighborhood of your dreams is a quick search away!
+       <h1>My New Neighborhood</h1>
+         <p> Stop dreaming, start searching. The neighborhood of your dreams is a quick search away!
          </p>
           <Row>
           <form className="form-horizontal">
@@ -36,8 +34,8 @@ const Jumbotron = props => {
 
             <Col size="xs-3 sm-2 md-4">
               <Button
-                onSubmit={handleSubmit}
                 onClick={handleSubmit}
+                onSubmit={handleSubmit}
                 type="submit" 
                 className="btn btn-danger"
                 >Search</Button>
