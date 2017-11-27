@@ -6,7 +6,7 @@ My New Neighborhood is an app that allows users to enter any location in the US 
 
 ## App Link
 
-[Heroku App Link](my-new-neighborhood-ap.herokuapp.com)
+[Heroku App Link](https://my-new-neighborhood-ap.herokuapp.com)
 
 ## Demos
 
